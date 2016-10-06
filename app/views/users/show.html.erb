@@ -1,0 +1,17 @@
+<!-- #  username        :string
+#  firstname       :string
+#  lastname        :string
+#  email           :text
+#  dob             :date
+#  image           :text
+#  password_digest :text -->
+<%= link_to "All users", root_path %>
+<%=image_tag @user.image %>
+
+<ul>
+  <li>User Name: <%= @user.username %></li>
+  <li>First Name: <%= @user.firstname %></li>
+  <li>Last Name: <%= @user.lastname %></li>
+  <li>Email : <%= @user.email %></li>
+  <li>Date of birth: <%= @user.dob.strftime( "%A, %B %e, %Y" ) %></li>
+</ul>

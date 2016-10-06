@@ -1,0 +1,18 @@
+<h1>Listing All users</h1>
+<%= link_to "Sign up", new_user_path %>
+
+
+  <% @users.each do |user| %>
+  <%= image_tag( user.image ) %>
+    <ul>
+      <li><strong>Username :</strong><%= user.username %></li>
+      <li><strong>First Name :</strong><%= user.firstname %></li>
+      <li><strong>Last Name :</strong><%= user.lastname %></li>
+      <li><strong>Email :</strong><%= user.email %></li>
+      <li><strong>Date of Birth :</strong><%= user.dob %></li>
+      <li><%= link_to 'Show', user_path(user) %></li>
+      <li><%= link_to "Edit", edit_user_path(user)%></li>
+      <li><%= link_to "Delete", user_path(user),method: :delete%></li>
+
+    </ul><hr>
+  <% end %>
