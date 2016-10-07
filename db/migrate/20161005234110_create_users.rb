@@ -8,6 +8,7 @@ class CreateUsers < ActiveRecord::Migration
       t.text   :email
       t.date   :dob
       t.text   :image
+      t.boolean :admin, :default => false
       t.text   :password_digest
 
       t.timestamps null: false

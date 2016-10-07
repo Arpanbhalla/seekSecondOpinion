@@ -9,6 +9,7 @@
 #  email           :text
 #  dob             :date
 #  image           :text
+#  admin           :boolean          default(FALSE)
 #  password_digest :text
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null

@@ -17,8 +17,19 @@ ActiveRecord::Schema.define(version: 20161005234134) do
   enable_extension "plpgsql"
 
   create_table "doctors", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.text     "image"
+    t.text     "doctors_fullname"
+    t.text     "doctors_qualifications"
+    t.text     "doctors_speciality"
+    t.text     "doctors_expertise"
+    t.text     "doctors_professional_experience"
+    t.text     "doctors_awards_recognitions"
+    t.text     "doctors_memberships"
+    t.text     "doctors_publications"
+    t.text     "doctors_email"
+    t.text     "password_digest"
+    t.datetime "created_at",                      null: false
+    t.datetime "updated_at",                      null: false
   end
 
   create_table "users", force: :cascade do |t|
@@ -28,9 +39,10 @@ ActiveRecord::Schema.define(version: 20161005234134) do
     t.text     "email"
     t.date     "dob"
     t.text     "image"
+    t.boolean  "admin",           default: false
     t.text     "password_digest"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
+    t.datetime "created_at",                      null: false
+    t.datetime "updated_at",                      null: false
   end
 
 end
