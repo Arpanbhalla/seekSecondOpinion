@@ -8,6 +8,14 @@
 </head>
 <body>
 
+<%= render :partial => './layouts/navigation' %>
+
+  <% if flash[:success] %>
+    <h1><%= flash[:success] %></h1>
+  <% end %>
+  <% if flash[:error] %>
+    <h1><%= flash[:error] %></h1>
+  <% end %>
 <%= yield %>
 
 </body>
