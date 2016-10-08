@@ -6,7 +6,7 @@
 #  image           :text
 #  password_digest :text
 User.destroy_all
-u1 = User.create :username => "Arpan Bhalla", :firstname => "Arpan", :lastname => "Bhalla", :email => "arpanbhalla@gmail.com", :dob => '3/9/1984', :password => "chicken", :password_confirmation => "chicken", :admin => true
+u1 = User.create :username => "Arpan Bhalla", :firstname => "Arpan", :lastname => "Bhalla", :email => "arpanbhalla@gmail.com", :dob => '3/9/1984', :password => "chicken", :password_confirmation => "chicken"
 
 u2 = User.create :username => "Johndoe", :firstname => "John", :lastname => "Doe", :email => "john@ga.com", :dob => '5/11/1987', :password => "chicken", :password_confirmation => "chicken"
 
