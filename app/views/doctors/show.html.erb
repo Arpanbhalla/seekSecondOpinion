@@ -1,4 +1,4 @@
-<h1>Doctors#show</h1> <%= link_to "All Doctors" , doctors_path %>
+<h1>Doctors#show</h1>
 <%=image_tag @doctor.image %>
 <ul>
   <li><%= @doctor.fullname  %></li>
@@ -9,3 +9,9 @@
   <li><%= @doctor.publications%></li>
   <li><%= @doctor.memberships%></li>
 </ul>
+
+<% if is_admin? %>
+    <%= link_to "Edit", edit_doctor_path(@doctor)%></li>
+    <%= link_to "Delete", doctor_path(@doctor),method: :delete%></li>
+    <%= link_to "All Doctors" , doctors_path %>
+<% end %>

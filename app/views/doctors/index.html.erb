@@ -11,9 +11,15 @@
     <li><strong>Awards :</strong><%= doctor.awards_recognitions %></li>
     <li><strong>Memberships :</strong><%= doctor.memberships %></li>
     <li><strong>Publications :</strong><%= doctor.publications %></li>
+<<<<<<< Updated upstream
     <li><%= link_to 'Show', doctor_path(doctor) %></li>
+=======
+  <button><%=link_to "Contact Doctor", doctor_path(doctor)  %></button>
+<% if is_admin? %>
+>>>>>>> Stashed changes
     <li><%= link_to "Edit", edit_doctor_path(doctor)%></li>
     <%= link_to "Delete", doctor_path(doctor),method: :delete%></li>
+<% end %>
     <hr>
 </ul>
 <% end %>
