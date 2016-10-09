@@ -4,15 +4,15 @@
 #
 #  id                              :integer          not null, primary key
 #  image                           :text
-#  doctors_fullname                :text
-#  doctors_qualifications          :text
-#  doctors_speciality              :text
-#  doctors_expertise               :text
-#  doctors_professional_experience :text
-#  doctors_awards_recognitions     :text
-#  doctors_memberships             :text
-#  doctors_publications            :text
-#  doctors_email                   :text
+#  fullname                :text
+#  qualifications          :text
+#  speciality              :text
+#  expertise               :text
+#  professional_experience :text
+#  awards_recognitions     :text
+#  memberships             :text
+#  publications            :text
+#  email                   :text
 #  password_digest                 :text
 #  created_at                      :datetime         not null
 #  updated_at                      :datetime         not null

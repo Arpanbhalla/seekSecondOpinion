@@ -14,8 +14,8 @@ class SessionController < ApplicationController
         flash[:error] = "Your password or email is incorrect"
         redirect_to login_path
       end
-    elsif (Doctor.exists?(:doctors_email => params[:email]))
-      doctor = Doctor.find_by(:doctors_email => params[:email])
+    elsif (Doctor.exists?(:email => params[:email]))
+      doctor = Doctor.find_by(:email => params[:email])
       if doctor.present? && doctor.authenticate( params[:password] )
         flash[:success] = "Doctor successfully logged in"
         session[:user_id] = doctor.id
