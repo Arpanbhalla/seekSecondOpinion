@@ -4,16 +4,22 @@
 <% @doctor.each do |doctor| %>
 <%= image_tag( doctor.image ) %>
   <ul>
-    <li><strong>Doctors Name :</strong><%= doctor.doctors_fullname %></li>
-    <li><strong>Doctors Qualifications :</strong><%= doctor.doctors_qualifications %></li>
-    <li><strong>Doctors Specility :</strong><%= doctor.doctors_speciality %></li>
-    <li><strong>Doctors Experience :</strong><%= doctor.doctors_expertise %></li>
-    <li><strong>Awards :</strong><%= doctor.doctors_awards_recognitions %></li>
-    <li><strong>Memberships :</strong><%= doctor.doctors_memberships %></li>
-    <li><strong>Publications :</strong><%= doctor.doctors_publications %></li>
+    <li><strong>Doctors Name :</strong><%= doctor.fullname %></li>
+    <li><strong>Doctors Qualifications :</strong><%= doctor.qualifications %></li>
+    <li><strong>Doctors Specility :</strong><%= doctor.speciality %></li>
+    <li><strong>Doctors Experience :</strong><%= doctor.expertise %></li>
+    <li><strong>Awards :</strong><%= doctor.awards_recognitions %></li>
+    <li><strong>Memberships :</strong><%= doctor.memberships %></li>
+    <li><strong>Publications :</strong><%= doctor.publications %></li>
+<<<<<<< Updated upstream
     <li><%= link_to 'Show', doctor_path(doctor) %></li>
+=======
+  <button><%=link_to "Contact Doctor", doctor_path(doctor)  %></button>
+<% if is_admin? %>
+>>>>>>> Stashed changes
     <li><%= link_to "Edit", edit_doctor_path(doctor)%></li>
     <%= link_to "Delete", doctor_path(doctor),method: :delete%></li>
+<% end %>
     <hr>
 </ul>
 <% end %>

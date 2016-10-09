@@ -16,6 +16,9 @@
 #
 
 class User < ActiveRecord::Base
+  has_many :conversations, :foreign_key => :sender_id
+
+
   has_secure_password
   validates :username, presence: true, uniqueness: true, length: { minimum: 2 }
   validates :firstname, presence: true,length: { minimum: 2 }

@@ -1,41 +1,41 @@
 <!-- t.text :image
-t.text :doctors_fullname
-t.text :doctors_qualifications
-t.text :doctors_speciality
-t.text :doctors_expertise
-t.text :doctors_professional_experience
-t.text :doctors_awards_recognitions
-t.text :doctors_memberships
-t.text :doctors_publications
+t.text :fullname
+t.text :qualifications
+t.text :speciality
+t.text :expertise
+t.text :professional_experience
+t.text :awards_recognitions
+t.text :memberships
+t.text :publications
 t.boolean :admin, :default => false -->
 <%= form_for @doctor do |f| %>
 
    <%= f.label :image %>
   <%= f.url_field :image%><br>
 
-  <%= f.label :doctors_fullname %>
-  <%= f.text_field :doctors_fullname %><br>
+  <%= f.label :fullname %>
+  <%= f.text_field :fullname %><br>
 
-  <%= f.label :doctors_qualifications %>
-  <%= f.text_field :doctors_qualifications %><br>
+  <%= f.label :qualifications %>
+  <%= f.text_field :qualifications %><br>
 
-  <%= f.label :doctors_speciality %>
-  <%= f.text_field :doctors_speciality %><br>
+  <%= f.label :speciality %>
+  <%= f.text_field :speciality %><br>
 
-  <%= f.label :doctors_professional_experience %>
-  <%= f.text_field :doctors_professional_experience %><br>
+  <%= f.label :professional_experience %>
+  <%= f.text_field :professional_experience %><br>
 
-  <%= f.label :doctors_awards_recognitions %>
-  <%= f.text_field :doctors_awards_recognitions %><br>
+  <%= f.label :awards_recognitions %>
+  <%= f.text_field :awards_recognitions %><br>
 
-  <%= f.label :doctors_memberships %>
-  <%= f.text_field :doctors_memberships %><br>
+  <%= f.label :memberships %>
+  <%= f.text_field :memberships %><br>
 
-  <%= f.label :doctors_publications %>
-  <%= f.text_field :doctors_publications %><br>
+  <%= f.label :publications %>
+  <%= f.text_field :publications %><br>
 
-  <%= f.label :doctors_email %>
-  <%= f.email_field :doctors_email %><br>
+  <%= f.label :email %>
+  <%= f.email_field :email %><br>
 
   <%= f.label :password %>
   <%= f.password_field :password %><br>
@@ -43,5 +43,5 @@ t.boolean :admin, :default => false -->
   <%= f.label :password_confirmation %>
   <%= f.password_field :password_confirmation %><br>
 
-  <%= f.submit "Sign up" %>
+  <%= f.submit "Create Doctor" %>
 <% end %>

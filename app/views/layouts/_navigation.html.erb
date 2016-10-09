@@ -1,13 +1,18 @@
+<nav class="navbar navbar-inverse">
+<% if logged_in? %>
+    <%= link_to 'Log out', logout_path, method: :delete %><strong> | </strong>
+    <% if is_user? %>
+      <% if is_admin? %>
+        <%= link_to 'Create Doctor Profile', new_doctor_path %><strong> | </strong>
+      <%end%>
+        <%= link_to "View your profile", user_path(current_user) %><strong> | </strong>
+        <%= link_to "Home", root_path %><strong> | </strong>
+        <%= link_to "All Doctors", doctors_path %><strong> | </strong>
+    <% else %>
+      <%= link_to "View your profile", doctor_path(current_user) %>
 
-<nav>
-  <% if logged_in? %>
-
-  <%= link_to 'Log out', logout_path, method: :delete %><strong> | </strong>
-  <%= link_to "Edit your profile", edit_user_path(current_user) %><strong> | </strong>
-  <%= link_to "View your profile", user_path(current_user) %>
-
-
-  <% else %>
+    <% end %>
+<% else %>
 
   <%= link_to 'Log in', login_path %> <strong> | </strong>
   <%= link_to 'Sign up', new_user_path %>
