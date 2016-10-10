@@ -6,11 +6,10 @@
         <%= link_to 'Create Doctor Profile', new_doctor_path %><strong> | </strong>
       <%end%>
         <%= link_to "View your profile", user_path(current_user) %><strong> | </strong>
-        <%= link_to "Home", root_path %><strong> | </strong>
         <%= link_to "All Doctors", doctors_path %><strong> | </strong>
+        <%= link_to "Home", root_path %><strong> | </strong>
     <% else %>
       <%= link_to "View your profile", doctor_path(current_user) %>
-
     <% end %>
 <% else %>
 

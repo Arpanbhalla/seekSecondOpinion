@@ -6,12 +6,13 @@ class ApplicationController < ActionController::Base
   helper_method :current_user,:logged_in?,:is_user?, :is_doctor?, :is_admin?
 
     def current_user
-      if session[:user_id]
-        if (User.exists?(:id => session[:user_id]))
-          @current_user ||= User.find(session[:user_id])
-        elsif (Doctor.exists?(:id => session[:user_id]))
-          @current_user ||= Doctor.find(session[:user_id])
+      if session[:email]
+        if (User.exists?(:email => session[:email]))
+          @current_user ||= User.find_by(:email => session[:email])
+        elsif (Doctor.exists?(:email => session[:email]))
+          @current_user ||= Doctor.find_by(:email => session[:email])
         end
+      session[:user_id] = @current_user.id
       end
     end
 
@@ -27,16 +28,16 @@ class ApplicationController < ActionController::Base
     end
 
     def is_doctor?
-      Doctor.exists?(:id => session[:user_id])
+      Doctor.exists?(:email => session[:email])
     end
 
     def is_user?
-      User.exists?(:id => session[:user_id])
+      User.exists?(:email => session[:email])
     end
 
     def is_admin?
-      if (User.exists?(:id => session[:user_id]))
-        user = User.find_by(:id => session[:user_id])
+      if (User.exists?(:email => session[:email]))
+        user = User.find_by(:email => session[:email])
         user.admin?
       end
     end
