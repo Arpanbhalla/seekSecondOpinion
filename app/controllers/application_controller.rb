@@ -3,18 +3,11 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
 
-  helper_method :current_user,:logged_in?,:is_user?, :is_doctor?, :is_admin?
+  helper_method :current_user,:logged_in?, :is_doctor?, :is_admin?
 
-    def current_user
-      if session[:email]
-        if (User.exists?(:email => session[:email]))
-          @current_user ||= User.find_by(:email => session[:email])
-        elsif (Doctor.exists?(:email => session[:email]))
-          @current_user ||= Doctor.find_by(:email => session[:email])
-        end
-      session[:user_id] = @current_user.id
-      end
-    end
+  def current_user
+    @current_user ||= User.find(session[:user_id]) if session[:user_id]
+  end
 
     def logged_in?
       !!current_user
@@ -28,16 +21,15 @@ class ApplicationController < ActionController::Base
     end
 
     def is_doctor?
-      Doctor.exists?(:email => session[:email])
-    end
-
-    def is_user?
-      User.exists?(:email => session[:email])
+      if (User.exists?(:id => session[:user_id]))
+        user = User.find_by(:id => session[:user_id])
+        user.doctor?
+      end
     end
 
     def is_admin?
-      if (User.exists?(:email => session[:email]))
-        user = User.find_by(:email => session[:email])
+      if (User.exists?(:id => session[:user_id]))
+        user = User.find_by(:id => session[:user_id])
         user.admin?
       end
     end

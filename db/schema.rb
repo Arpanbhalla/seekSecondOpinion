@@ -25,23 +25,6 @@ ActiveRecord::Schema.define(version: 20161009111707) do
     t.datetime "updated_at"
   end
 
-  create_table "doctors", force: :cascade do |t|
-    t.text     "image"
-    t.text     "firstname"
-    t.text     "lastname"
-    t.text     "qualifications"
-    t.text     "speciality"
-    t.text     "expertise"
-    t.text     "professional_experience"
-    t.text     "awards_recognitions"
-    t.text     "memberships"
-    t.text     "publications"
-    t.text     "email"
-    t.text     "password_digest"
-    t.datetime "created_at",              null: false
-    t.datetime "updated_at",              null: false
-  end
-
   create_table "messages", force: :cascade do |t|
     t.text     "body"
     t.integer  "conversation_id"
@@ -57,16 +40,23 @@ ActiveRecord::Schema.define(version: 20161009111707) do
   add_index "messages", ["user_id"], name: "index_messages_on_user_id", using: :btree
 
   create_table "users", force: :cascade do |t|
-    t.string   "username"
     t.string   "firstname"
     t.string   "lastname"
+    t.text     "image"
     t.text     "email"
     t.date     "dob"
-    t.text     "image"
-    t.boolean  "admin",           default: false
+    t.boolean  "admin",                          default: false
+    t.boolean  "doctor"
+    t.text     "doctor_qualifications"
+    t.text     "doctor_speciality"
+    t.text     "doctor_expertise"
+    t.text     "doctor_professional_experience"
+    t.text     "doctor_awards_recognitions"
+    t.text     "doctor_memberships"
+    t.text     "doctor_publications"
     t.text     "password_digest"
-    t.datetime "created_at",                      null: false
-    t.datetime "updated_at",                      null: false
+    t.datetime "created_at",                                     null: false
+    t.datetime "updated_at",                                     null: false
   end
 
 end

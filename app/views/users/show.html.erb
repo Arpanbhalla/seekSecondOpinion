@@ -6,15 +6,23 @@
 #  image           :text
 #  password_digest :text -->
 
-<%=image_tag @user.image %>
-
 <ul>
-  <li>User Name: <%= @user.username %></li>
+  <%=image_tag @user.image %>
+<%if is_doctor?%>
+  <li>First Name: <%= "Dr. #{@user.firstname}" %></li>
+  <li>Last Name: <%= @user.lastname %></li>
+  <li>Email : <%= @user.email %></li>
+  <li>Qualifications: <%= @user.doctor_qualifications%></li>
+  <li>Speciality: <%= @user.doctor_speciality%></li>
+  <li>Awards/Recognitions: <%= @user.doctor_awards_recognitions%></li>
+  <li>Professional Experience: <%= @user.doctor_professional_experience%></li>
+  <li>Publications: <%= @user.doctor_publications%></li>
+  <li>Memberships: <%= @user.doctor_memberships%></li>
+<%else%>
   <li>First Name: <%= @user.firstname %></li>
   <li>Last Name: <%= @user.lastname %></li>
   <li>Email : <%= @user.email %></li>
   <li>Date of birth: <%= @user.dob.strftime( "%A, %B %e, %Y" ) %></li>
+  <%= link_to "Edit your profile", edit_user_path(@user) %>
+<%end%>
 </ul>
-
-
-<%= link_to "Edit your profile", edit_user_path(@user) %>

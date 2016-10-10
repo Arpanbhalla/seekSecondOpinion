@@ -1,18 +1,17 @@
 <h1>Listing All users</h1>
 
-
-
-  <% @users.each do |user| %>
-  <%= image_tag( user.image ) %>
+  <% @doctors.each do |doctor| %>
+  <%= image_tag( doctor.image ) %>
     <ul>
-      <li><strong>Username :</strong><%= user.username %></li>
-      <li><strong>First Name :</strong><%= user.firstname %></li>
-      <li><strong>Last Name :</strong><%= user.lastname %></li>
-      <li><strong>Email :</strong><%= user.email %></li>
-      <li><strong>Date of Birth :</strong><%= user.dob %></li>
-      <li><%= link_to 'Show', user_path(user) %></li>
-      <li><%= link_to "Edit", edit_user_path(user)%></li>
-      <li><%= link_to "Delete", user_path(user),method: :delete%></li>
-
+      <li>First Name :<%= "Dr. #{doctor.firstname}" %></li>
+      <li>Last Name :<%= doctor.lastname %></li>
+      <li>Email :<%= doctor.email %></li>
+      <li>Date of Birth :<%= doctor.dob %></li>
+      <li>Qualifications: <%= doctor.doctor_qualifications%></li>
+      <li>Speciality: <%= doctor.doctor_speciality%></li>
+      <li>Awards/Recognitions: <%= doctor.doctor_awards_recognitions%></li>
+      <li>Professional Experience: <%= doctor.doctor_professional_experience%></li>
+      <li>Publications: <%= doctor.doctor_publications%></li>
+      <li>Memberships: <%= doctor.doctor_memberships%></li>
     </ul><hr>
   <% end %>

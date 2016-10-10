@@ -1,0 +1,40 @@
+<%= form_for @user do |f| %>
+
+  <%= f.label :firstname %>
+  <%= f.text_field :firstname %><br>
+
+  <%= f.label :lastname %>
+  <%= f.text_field :lastname %><br>
+
+  <%= f.label :email %>
+  <%= f.email_field :email %><br>
+
+  <%= f.label :image %>
+  <%= f.url_field :image%><br>
+
+  <%= f.label :doctor_qualifications %>
+  <%= f.text_field :doctor_qualifications %><br>
+
+  <%= f.label :doctor_speciality %>
+  <%= f.text_field :doctor_speciality %><br>
+
+  <%= f.label :doctor_professional_experience %>
+  <%= f.text_field :doctor_professional_experience %><br>
+
+  <%= f.label :doctor_awards_recognitions %>
+  <%= f.text_field :doctor_awards_recognitions %><br>
+
+  <%= f.label :doctor_memberships %>
+  <%= f.text_field :doctor_memberships %><br>
+
+  <%= f.label :doctor_publications %>
+  <%= f.text_field :doctor_publications %><br>
+
+  <%= f.label :password %>
+  <%= f.password_field :password %><br>
+
+  <%= f.label :password_confirmation %>
+  <%= f.password_field :password_confirmation %><br>
+
+  <%= f.submit "Create Doctor" %>
+<% end %>

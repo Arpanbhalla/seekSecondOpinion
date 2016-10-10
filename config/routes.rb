@@ -7,11 +7,10 @@ Rails.application.routes.draw do
 
 
   resources :users
-  resources :doctors
 
   resources :conversations do
-  resources :messages
-end
+    resources :messages
+  end
 
 
   get '/login'      => 'session#new', :as => "login"

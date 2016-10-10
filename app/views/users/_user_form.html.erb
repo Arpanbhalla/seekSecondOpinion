@@ -6,9 +6,6 @@
 #  image           :text
 #  password_digest :text -->
 <%= form_for @user do |f| %>
-  <%= f.label :username %>
-  <%= f.text_field :username %><br>
-
   <%= f.label :firstname %>
   <%= f.text_field :firstname %><br>
 
@@ -22,7 +19,7 @@
   <%= f.date_select :dob %><br>
 
   <%= f.label :image %>
-    <%= f.url_field :image%><br>
+  <%= f.url_field :image%><br>
 
   <%= f.label :password %>
   <%= f.password_field :password %><br>
