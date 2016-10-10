@@ -17,15 +17,18 @@ ActiveRecord::Schema.define(version: 20161009111707) do
   enable_extension "plpgsql"
 
   create_table "conversations", force: :cascade do |t|
-    t.integer  "sender_id"
-    t.integer  "recipient_id"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
+    t.integer  "sender_doctor_id"
+    t.integer  "recipient_user_id"
+    t.integer  "sender_user_id"
+    t.integer  "recipient_doctor_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "doctors", force: :cascade do |t|
     t.text     "image"
-    t.text     "fullname"
+    t.text     "firstname"
+    t.text     "lastname"
     t.text     "qualifications"
     t.text     "speciality"
     t.text     "expertise"
@@ -45,8 +48,8 @@ ActiveRecord::Schema.define(version: 20161009111707) do
     t.integer  "user_id"
     t.integer  "doctor_id"
     t.boolean  "read",            default: false
-    t.datetime "created_at",                      null: false
-    t.datetime "updated_at",                      null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   add_index "messages", ["conversation_id"], name: "index_messages_on_conversation_id", using: :btree

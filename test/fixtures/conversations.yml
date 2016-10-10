@@ -1,3 +1,16 @@
+# == Schema Information
+#
+# Table name: conversations
+#
+#  id                  :integer          not null, primary key
+#  sender_doctor_id    :integer
+#  recipient_user_id   :integer
+#  sender_user_id      :integer
+#  recipient_doctor_id :integer
+#  created_at          :datetime
+#  updated_at          :datetime
+#
+
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 # This model initially had no columns defined.  If you add columns to the

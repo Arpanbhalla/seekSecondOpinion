@@ -3,7 +3,8 @@ class CreateDoctors < ActiveRecord::Migration
     create_table :doctors do |t|
 
       t.text :image
-      t.text :fullname
+      t.text :firstname
+      t.text :lastname
       t.text :qualifications
       t.text :speciality
       t.text :expertise

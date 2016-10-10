@@ -15,7 +15,8 @@ u3 = User.create :username => "Nicolas Cage", :firstname => "Nicolas", :lastname
 
 Doctor.destroy_all
 
-d1 = Doctor.create :fullname => "Dr Pooja Middha",
+d1 = Doctor.create :firstname => "Pooja",
+:lastname => "Middha",
 :qualifications => "( MBBS, MD, DM )",
 :speciality => "Cardiologist",
 :expertise => "More than 30 years of experience in cardiology
@@ -27,7 +28,8 @@ Assistant Professor (Cardiology), Nizam's Institute of Medical Sciences, Hyderab
 Consultant (Cardiology), Mediciti Hospitals, Hyderabad (1993 – 1997)",
 :email => "pooja@ga.com",:password => "chicken", :password_confirmation => "chicken"
 
-d2 = Doctor.create :fullname => "Dr VK Verma",
+d2 = Doctor.create :firstname => "VK",
+:lastname => "Verma",
 :qualifications =>"( MBBS, MD, DM )",
 :speciality =>"Ophthalmologist",
 :expertise => "More than 10 years of experience in Ophthalmology

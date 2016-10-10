@@ -1,7 +1,7 @@
 <h1>Doctors#show</h1>
 <%=image_tag @doctor.image %>
 <ul>
-  <li><%= @doctor.fullname  %></li>
+  <li>Dr. <%= @doctor.firstname%> <%= @doctor.lastname%></li>
   <li><%= @doctor.qualifications%></li>
   <li><%= @doctor.speciality%></li>
   <li><%= @doctor.awards_recognitions%></li>
@@ -15,3 +15,7 @@
     <%= link_to "Delete", doctor_path(@doctor),method: :delete%></li>
     <%= link_to "All Doctors" , doctors_path %>
 <% end %>
+
+<%if is_user? %>
+  <%= link_to 'Message Doctor!', conversations_path(sender_user_id: current_user, recipient_doctor_id: @doctor.id), method: 'post'%>
+<%end%>

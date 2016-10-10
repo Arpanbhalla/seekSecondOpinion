@@ -1,5 +1,6 @@
 <!-- t.text :image
-t.text :fullname
+t.text :firstname
+t.text :lastname
 t.text :qualifications
 t.text :speciality
 t.text :expertise
@@ -13,8 +14,11 @@ t.boolean :admin, :default => false -->
    <%= f.label :image %>
   <%= f.url_field :image%><br>
 
-  <%= f.label :fullname %>
-  <%= f.text_field :fullname %><br>
+  <%= f.label :firstname %>
+  <%= f.text_field :firstname %><br>
+
+  <%= f.label :lastname %>
+  <%= f.text_field :lastname %><br>
 
   <%= f.label :qualifications %>
   <%= f.text_field :qualifications %><br>

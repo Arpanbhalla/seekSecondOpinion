@@ -2,9 +2,10 @@
 #
 # Table name: doctors
 #
-#  id                              :integer          not null, primary key
-#  image                           :text
-#  fullname                :text
+#  id                      :integer          not null, primary key
+#  image                   :text
+#  firstname               :text
+#  lastname                :text
 #  qualifications          :text
 #  speciality              :text
 #  expertise               :text
@@ -13,9 +14,9 @@
 #  memberships             :text
 #  publications            :text
 #  email                   :text
-#  password_digest                 :text
-#  created_at                      :datetime         not null
-#  updated_at                      :datetime         not null
+#  password_digest         :text
+#  created_at              :datetime         not null
+#  updated_at              :datetime         not null
 #
 
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html

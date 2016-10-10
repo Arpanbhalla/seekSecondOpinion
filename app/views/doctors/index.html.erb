@@ -4,7 +4,7 @@
 <% @doctor.each do |doctor| %>
 <%= image_tag( doctor.image ) %>
   <ul>
-    <li><strong>Doctors Name :</strong><%= doctor.fullname %></li>
+    <li><strong>Doctors Name :</strong> Dr. <%= doctor.firstname %><%= doctor.lastname %></li>
     <li><strong>Doctors Qualifications :</strong><%= doctor.qualifications %></li>
     <li><strong>Doctors Specility :</strong><%= doctor.speciality %></li>
     <li><strong>Doctors Experience :</strong><%= doctor.expertise %></li>
