@@ -13,5 +13,11 @@
       <li>Professional Experience: <%= doctor.doctor_professional_experience%></li>
       <li>Publications: <%= doctor.doctor_publications%></li>
       <li>Memberships: <%= doctor.doctor_memberships%></li>
-    </ul><hr>
+    </ul>
+    <%if is_admin?%>
+      <%= link_to "Edit", edit_user_path(doctor)%>
+      <%= link_to "Delete", user_path(doctor),method: :delete%>
+    <% end %>
+    <%=link_to "Contact Doctor", user_path(doctor)  %>
+  <hr>
   <% end %>

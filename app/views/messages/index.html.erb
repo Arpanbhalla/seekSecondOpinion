@@ -1,33 +1,35 @@
 <% if @over_ten %>
-   <%= link_to 'Show Previous', '?m=all' %>
+<%= link_to 'Show Previous', '?m=all' %>
 <% end %>
 
-
-  <% @messages.each do |message| %>
+<div class="ui segment">
+    <% @messages.each do |message| %>
     <% if message.body %>
-      <%if is_doctor?%>
-        <%user = Doctor.find(message.doctor_id)%>
-        <%user_name = "Dr. " + user.firstname + " " + user.lastname %>
-      <%else%>
-        <%user = User.find(message.user_id)%>
-        <%user_name = user.firstname + ' '+ user.lastname%>
-      <%end%>
-      <strong><%= user_name %></strong>
-      <%= message.message_time %>
-      <%= message.body %>
+    <% user = User.find(message.user_id) %>
+    <div class="item">
+        <div class="content">
+            <div class="header">
+                <strong><%= user.firstname %></strong>
+                <%= message.message_time %></div>
+            <div class="list">
+                <div class="item">
+                    <i class="right triangle icon"></i>
+                    <%= message.body %>
+                </div>
+            </div>
+        </div>
+    </div>
     <% end %>
-  <% end %>
+    <% end %>
+</div>
 
 <%= form_for [@conversation, @message], html: {class: "ui reply form"} do |f| %>
-  <div class="field">
+<div class="field">
     <%= f.text_area :body, class: "form-control" %>
-  </div>
-    <%= f.text_field :user_id, value: current_user, type: "hidden"  %>
-  <div>
-  </div>
-    <%= f.text_field :doctor_id, value: current_user, type: "hidden"  %>
-  <div>
-    <%= f.submit "Reply", class: "ui blue labeled submit icon button" %>
-  </div>
+</div>
+<%= f.text_field :user_id, value: current_user.id, type: "hidden"  %>
+<div>
+    <%= f.submit "Add Reply", class: "ui blue labeled submit icon button" %>
+</div>
 
 <% end %>

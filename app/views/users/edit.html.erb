@@ -1,11 +1,15 @@
 <h1>Users#edit</h1>
 
 <!-- <%#= link_to root_path %> -->
-<!-- #
+<!--
 #  firstname       :string
 #  lastname        :string
 #  email           :text
 #  dob             :date
 #  image           :text
 #  password_digest :text -->
-<%= render :partial => 'user_form' %>
+<%if is_admin? && @user.doctor?%>
+  <%= render :partial => 'doctor_form' %>
+<%else%>
+  <%= render :partial => 'user_form' %>
+<%end%>
