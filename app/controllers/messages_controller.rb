@@ -3,6 +3,10 @@ class MessagesController < ApplicationController
     @conversation = Conversation.find(params[:conversation_id])
   end
 
+  def unread_messages
+    @conversation.messages.where({:read => false}).count
+  end
+
   def index
     @messages = @conversation.messages
     if @messages.length > 5
@@ -10,7 +14,7 @@ class MessagesController < ApplicationController
       @messages = @messages[-10..-1]
     end
     if params[:m]
-      @over_ten = false
+      @over_five = false
       @messages = @conversation.messages
     end
     if @messages.last

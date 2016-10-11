@@ -36,5 +36,7 @@
   <%= f.label :password_confirmation %>
   <%= f.password_field :password_confirmation %><br>
 
+  <%= f.text_field :doctor, value: true, type: "hidden"  %>
+
   <%= f.submit "Create Doctor" %>
 <% end %>

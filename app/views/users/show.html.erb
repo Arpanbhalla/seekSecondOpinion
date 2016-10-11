@@ -6,10 +6,11 @@
 #  image           :text
 #  password_digest :text -->
 
+<%=image_tag @user.image %>
+
 <ul>
-Unread Messages :<%= @user.unread_messages %>
-  <%=image_tag @user.image %>
-<%if @user.doctor?%>
+  <%if @user.doctor?%>
+  Unread Messages :<%= @user.unread_messages %>
   <li>First Name: <%= "Dr. #{@user.firstname}" %></li>
   <li>Last Name: <%= @user.lastname %></li>
   <li>Email : <%= @user.email %></li>

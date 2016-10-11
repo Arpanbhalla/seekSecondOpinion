@@ -6,7 +6,7 @@
         <% if message.body %>
         <% user = User.find(message.user_id) %>
         <%if user.doctor?%>
-          <strong><%= "Dr. #{user.firstname} anwered :" %></strong>
+          <strong><%= "Dr. #{user.firstname} answered :" %></strong>
           <% else %>
         <strong><%= "You Asked #{user.firstname} :" %></strong>
         <% end %>
