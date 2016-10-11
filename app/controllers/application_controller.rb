@@ -27,6 +27,13 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def is_doctor?
+    if (User.exists?(:id => session[:user_id]))
+      user = User.find_by(:id => session[:user_id])
+      user.doctor?
+    end
+  end
+
   def is_admin?
     if (User.exists?(:id => session[:user_id]))
       user = User.find_by(:id => session[:user_id])

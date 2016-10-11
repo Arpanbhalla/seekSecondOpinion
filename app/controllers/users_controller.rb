@@ -17,7 +17,14 @@ class UsersController < ApplicationController
   end
 
   def show
+    @is_charged = false
     @user=User.find params[:id]
+    if logged_in?
+      @payment_entry = Charge.find_by(:doctor => @user.id , :user =>current_user.id)
+      if @payment_entry.present?
+        @is_charged = @payment_entry.payment_charged?
+      end
+    end
     @conversations=Conversation.all
   end
 
@@ -26,8 +33,12 @@ class UsersController < ApplicationController
   end
 
   def create
-    @user = User.create(user_params)
-    redirect_to user_path(@user)
+    @user = User.create!(user_params)
+    if @user.doctor?
+      redirect_to user_path(@user)
+    else
+      redirect_to login_path
+    end
   end
 
   def update

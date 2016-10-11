@@ -5,7 +5,4 @@ class Charge < ActiveRecord::Base
   validates_uniqueness_of :user_id, :scope => :doctor_id
   validates_presence_of :payment_charged, :user_id, :doctor_id
 
-  scope :between, -> (user_id,doctor_id) do
-    where("(charges.user_id = ? AND charges.doctor_id =?)", user_id, doctor_id)
-
 end

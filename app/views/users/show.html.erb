@@ -10,7 +10,6 @@
 
 <ul>
   <%if @user.doctor?%>
-  Unread Messages :<%= @user.unread_messages %>
   <li>First Name: <%= "Dr. #{@user.firstname}" %></li>
   <li>Last Name: <%= @user.lastname %></li>
   <li>Email : <%= @user.email %></li>
@@ -21,7 +20,11 @@
   <li>Publications: <%= @user.doctor_publications%></li>
   <li>Memberships: <%= @user.doctor_memberships%></li>
   <%if !is_doctor?%>
-  <%= link_to "Message Doctor", conversations_path(sender_id: current_user.id, recipient_id: @user.id), method: 'post' %>
+    <% if @is_charged %>
+      <%= link_to "Message Doctor", conversations_path(sender_id: current_user.id, recipient_id: @user.id), method: 'post' %>
+    <%else%>
+      <%=link_to "Make Payment",  new_charge_path(doctor_id: @user.id)%>
+    <%end%>
   <%end%>
 <%else%>
   <li>First Name: <%= @user.firstname %></li>

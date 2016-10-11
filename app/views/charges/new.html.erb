@@ -6,8 +6,9 @@
       </div>
     <% end %>
     <label class="amount">
-      <span>Amount: AU$50.00</span>
+      <span>Amount: AU$20.00</span>
     </label>
+    <%= hidden_field_tag :doctor_id, @doctor.id %>
   </article>
 
   <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"

@@ -12,7 +12,9 @@
         <% end %>
         <%= message.message_time %></div><br>
         Message: <%= message.body.html_safe  %><br>
+        <%if message.image?%>
         <%= image_tag message.image %><br />
+        <%end%>
         <!-- <%#= link_to "Delete",@messages, method: :delete%> -->
 
         <hr>

@@ -2,10 +2,10 @@ class MessagesController < ApplicationController
   before_action do
     @conversation = Conversation.find(params[:conversation_id])
   end
-
-  def unread_messages
-    @conversation.messages.where({:read => false}).count
-  end
+  # 
+  # def unread_messages
+  #   @conversation.messages.where({:read => false}).count
+  # end
 
   def index
     @messages = @conversation.messages
