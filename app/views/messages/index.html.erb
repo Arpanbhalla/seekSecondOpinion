@@ -1,19 +1,26 @@
-<% if @over_ten %>
-<%= link_to 'Show Previous', '?m=all' %>
+<% if @over_five %>
+<%= link_to 'Show Previous', '?m=all' %> <hr>
 <% end %>
 
 <% @messages.each do |message| %>
         <% if message.body %>
         <% user = User.find(message.user_id) %>
-        <strong><%= user.firstname %></strong>
-        <%= message.message_time %></div>
-        <%= message.body %>
-        <%= image_tag message.image %>
+        <%if user.doctor?%>
+          <strong><%= "Dr. #{user.firstname} anwered :" %></strong>
+          <% else %>
+        <strong><%= "You Asked #{user.firstname} :" %></strong>
+        <% end %>
+        <%= message.message_time %></div><br>
+        Message: <%= message.body.html_safe  %><br>
+        <%= image_tag message.image %><br />
+        <!-- <%#= link_to "Delete",@messages, method: :delete%> -->
+
+        <hr>
         <% end %>
 <% end %>
 
 <%= form_for [@conversation, @message], html: {class: "ui reply form"} do |f| %>
-<%= f.text_area :body, class: "form-control" %>
+<%= f.cktext_area :body, class: "form-control", ckeditor: { language: 'en'} %>
 <%= f.text_field :user_id, value: current_user.id, type: "hidden"  %>
 <%= f.label :image %>
 <%= f.url_field :image%>

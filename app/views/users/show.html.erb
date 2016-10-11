@@ -7,6 +7,7 @@
 #  password_digest :text -->
 
 <ul>
+Unread Messages :<%= @user.unread_messages %>
   <%=image_tag @user.image %>
 <%if @user.doctor?%>
   <li>First Name: <%= "Dr. #{@user.firstname}" %></li>
@@ -25,7 +26,8 @@
   <li>First Name: <%= @user.firstname %></li>
   <li>Last Name: <%= @user.lastname %></li>
   <li>Email : <%= @user.email %></li>
-  <li>Date of birth: <%= @user.dob.strftime( "%A, %B %e, %Y" ) %></li>
+  <li>Date of birth: <%= @user.dob%></li>
+  <li>Age : <%= ((Date.today - @user.dob).to_i / 365.25).ceil %> Years</li>
   <%= link_to "Edit your profile", edit_user_path(@user) %>
 <%end%>
 </ul>

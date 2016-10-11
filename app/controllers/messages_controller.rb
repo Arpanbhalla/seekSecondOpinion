@@ -5,8 +5,8 @@ class MessagesController < ApplicationController
 
   def index
     @messages = @conversation.messages
-    if @messages.length > 10
-      @over_ten = true
+    if @messages.length > 5
+      @over_five = true
       @messages = @messages[-10..-1]
     end
     if params[:m]
@@ -31,6 +31,12 @@ class MessagesController < ApplicationController
     if @message.save
       redirect_to conversation_messages_path(@conversation)
     end
+  end
+
+  def destroy
+    @message = @conversation
+    @message.destroy
+    redirect_to @conversation.messages
   end
 
 private
