@@ -32,6 +32,5 @@
   <li>Email : <%= @user.email %></li>
   <li>Date of birth: <%= @user.dob%></li>
   <li>Age : <%= ((Date.today - @user.dob).to_i / 365.25).ceil %> Years</li>
-  <%= link_to "Edit your profile", edit_user_path(@user) %>
 <%end%>
 </ul>
