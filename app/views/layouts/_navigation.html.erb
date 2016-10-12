@@ -9,7 +9,7 @@
       <% if is_admin? %>
         <%= link_to 'Create Doctor Profile', new_user_path %><strong> | </strong>
       <%end%>
-        <%= link_to "View your profile", user_path(current_user) %><strong> | </strong>
+        <%= link_to "View your profile", user_path(current_user) %><strong> | </strong> 
         <%= link_to "All Doctors", users_path %><strong> | </strong>
         <%= link_to "Home", root_path %><strong> | </strong>
     <% end %>
