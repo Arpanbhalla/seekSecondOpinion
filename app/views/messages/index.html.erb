@@ -6,26 +6,31 @@
         <% if message.body %>
         <% user = User.find(message.user_id) %>
         <%if user.doctor?%>
-          <strong><%= "Dr. #{user.firstname} answered :" %></strong>
+          <strong><%= "Dr. #{user.firstname.capitalize} answered :" %></strong>
           <% else %>
-        <strong><%= "You Asked #{user.firstname} :" %></strong>
+        <strong><%= "You Asked #{user.firstname.capitalize} :" %></strong>
         <% end %>
         <%= message.message_time %></div><br>
         Message: <%= message.body.html_safe  %><br>
         <%if message.images?%>
-        <%= image_tag message.images %><br />
+        <div class="scroller">
+                <% message.images.each do |image| %>
+                        <%= cl_image_tag(image, class: 'user_reports') %>
+                <% end %>
+        </div>
         <%end%>
-        <!-- <%#= link_to "Delete",@messages, method: :delete%> -->
 
         <hr>
         <% end %>
 <% end %>
 
-<%= form_for [@conversation, @message], html: {class: "ui reply form"} do |f| %>
+<%= form_for [@conversation, @message], html: {class: "ui reply form", :multipart => true} do |f| %>
 <%= f.cktext_area :body, class: "form-control", ckeditor: { language: 'en'} %>
 <%= f.text_field :user_id, value: current_user.id, type: "hidden"  %>
-<%= f.label :images %>
-<%= f.url_field :images%>
+<p>
+        <%= f.label :images %>
+        <%= f.file_field :images, :multiple => true %>
+</p>
 <%= f.submit "Add Reply", class: "ui blue labeled submit icon button" %>
 
 <% end %>

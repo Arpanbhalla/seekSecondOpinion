@@ -2,7 +2,7 @@ class MessagesController < ApplicationController
   before_action do
     @conversation = Conversation.find(params[:conversation_id])
   end
-  # 
+  #
   # def unread_messages
   #   @conversation.messages.where({:read => false}).count
   # end
@@ -32,8 +32,16 @@ class MessagesController < ApplicationController
 
   def create
     @message = @conversation.messages.new(message_params)
+    if params[:message][:images].present?
+      params[:message][:images].each do |image|
+        req = Cloudinary::Uploader.upload(image)
+        @message.images << req["public_id"]
+      end
+    end
     if @message.save
       redirect_to conversation_messages_path(@conversation)
+    else
+      redirect_to :back
     end
   end
 
@@ -45,6 +53,6 @@ class MessagesController < ApplicationController
 
 private
   def message_params
-    params.require(:message).permit(:body, :user_id, :image)
+    params.require(:message).permit(:body, :user_id, :images)
   end
 end

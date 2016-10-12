@@ -1,7 +1,7 @@
 <h1>Listing All users</h1>
 
   <% @doctors.each do |doctor| %>
-  <%= cl_image_tag( doctor.image ) %>
+  <%= cl_image_tag( doctor.image )%>
     <ul>
       <li>First Name :<%= "Dr. #{doctor.firstname}" %></li>
       <li>Last Name :<%= doctor.lastname %></li>
