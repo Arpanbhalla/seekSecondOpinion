@@ -34,16 +34,32 @@ class UsersController < ApplicationController
 
   def create
     @user = User.create!(user_params)
-    if @user.doctor?
-      redirect_to user_path(@user)
-    else
-      redirect_to login_path
+    if params[:file].present?
+        # Then call Cloudinary's upload method, passing in the file in params
+        req = Cloudinary::Uploader.upload(params[:file])
+      # Using the public_id allows us to use Cloudinary's powerful image transformation methods.
+      @user.image = req["public_id"]
+    end
+    if @user.save
+      if @user.doctor?
+        redirect_to user_path(@user)
+      else
+        redirect_to login_path
+      end
     end
   end
 
   def update
     @user = User.find params[:id]
-    @user.update(user_params)
+    if params[:file].present?
+          # Then call Cloudinary's upload method, passing in the file in params
+          req = Cloudinary::Uploader.upload(params[:file])
+        # Using the public_id allows us to use Cloudinary's powerful image transformation methods.
+        @user.image = req["public_id"]
+    end
+    # We're using update_attributes here because we don't want to make to PUT requests (.update to update the attributes in @user_params, then .save to update the image)
+    @user.update_attributes(user_params)
+    @user.save
     redirect_to user_path(@user)
   end
 
@@ -55,6 +71,6 @@ class UsersController < ApplicationController
 
   private
   def user_params
-    params.require(:user).permit(:firstname, :lastname, :email, :dob, :image, :doctor_qualifications, :doctor_speciality, :doctor_expertise, :doctor_professional_experience, :doctor, :password, :password_confirmation)
+    params.require(:user).permit(:firstname, :lastname, :email, :dob, :doctor_qualifications, :doctor_speciality, :doctor_expertise, :doctor_professional_experience, :doctor_awards_recognitions, :doctor_memberships, :doctor_publications, :doctor, :password, :password_confirmation)
   end
 end

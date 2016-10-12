@@ -12,8 +12,8 @@
         <% end %>
         <%= message.message_time %></div><br>
         Message: <%= message.body.html_safe  %><br>
-        <%if message.image?%>
-        <%= image_tag message.image %><br />
+        <%if message.images?%>
+        <%= image_tag message.images %><br />
         <%end%>
         <!-- <%#= link_to "Delete",@messages, method: :delete%> -->
 
@@ -24,8 +24,8 @@
 <%= form_for [@conversation, @message], html: {class: "ui reply form"} do |f| %>
 <%= f.cktext_area :body, class: "form-control", ckeditor: { language: 'en'} %>
 <%= f.text_field :user_id, value: current_user.id, type: "hidden"  %>
-<%= f.label :image %>
-<%= f.url_field :image%>
+<%= f.label :images %>
+<%= f.url_field :images%>
 <%= f.submit "Add Reply", class: "ui blue labeled submit icon button" %>
 
 <% end %>

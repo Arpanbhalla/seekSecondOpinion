@@ -6,7 +6,7 @@
 #  image           :text
 #  password_digest :text -->
 
-<%=image_tag @user.image %>
+<%=cl_image_tag(@user.image) %>
 
 <ul>
   <%if @user.doctor?%>

@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-
+gem 'cloudinary'
 gem 'ckeditor'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.6'
@@ -42,6 +42,8 @@ group :development, :test do
   gem 'pry-rails'
   gem 'annotate'
   gem 'cloudinary'
+
+
 
 
 end
