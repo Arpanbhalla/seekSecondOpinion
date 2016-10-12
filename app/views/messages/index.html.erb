@@ -6,9 +6,9 @@
         <% if message.body %>
         <% user = User.find(message.user_id) %>
         <%if user.doctor?%>
-          <strong><%= "Dr. #{user.firstname.capitalize} answered :" %></strong>
+          <strong><%= "Dr. #{user.firstname.capitalize}:" %></strong>
           <% else %>
-        <strong><%= "You Asked #{user.firstname.capitalize} :" %></strong>
+        <strong><%= "#{user.firstname.capitalize} :" %></strong>
         <% end %>
         <%= message.message_time %></div><br>
         Message: <%= message.body.html_safe  %><br>
@@ -20,7 +20,6 @@
         </div>
         <%end%>
 
-        <hr>
         <% end %>
 <% end %>
 

@@ -39,7 +39,7 @@
  }
 }
 .slick-prev::before, .slick-next::before {
- color: green;
+ color: black;
 }
 
 .slick-next {
@@ -49,12 +49,18 @@
 .slick-prev {
  left: 310px;
 }
+
 img {
-  width : 12%;
+  width : 70%;
   height :170px;
   border-radius: 100px;
+  border: 1px solid black;
 }
 
+.doctor-actions {
+  margin-left: 3%;
+  margin-top: 2%;
+}
 .user_reports {
 background-size: 100% 100%;
 border-radius: 1px;
@@ -62,4 +68,5 @@ border-radius: 1px;
 .scroller:hover {
   -webkit-transform:scale(1.2);
   transform:scale(1.2);
+  cursor: pointer;
 }

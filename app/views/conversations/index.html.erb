@@ -6,6 +6,8 @@
     <% else %>
       <% recipient = User.find(conversation.sender_id) %>
     <% end %>
-    <%= link_to recipient.firstname, conversation_messages_path(conversation)%>
+    <button class="btn btn-primary" type="button">
+      <%= link_to recipient.firstname, conversation_messages_path(conversation)%>
+    </button>
   <% end %>
 <% end %>

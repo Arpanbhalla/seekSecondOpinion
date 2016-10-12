@@ -5,32 +5,47 @@
 #  dob             :date
 #  image           :text
 #  password_digest :text -->
-
-<%=cl_image_tag(@user.image) %>
-
-<ul>
+<div class="panel panel-info">
   <%if @user.doctor?%>
-  <li>First Name: <%= "Dr. #{@user.firstname}" %></li>
-  <li>Last Name: <%= @user.lastname %></li>
-  <li>Email : <%= @user.email %></li>
-  <li>Qualifications: <%= @user.doctor_qualifications%></li>
-  <li>Speciality: <%= @user.doctor_speciality%></li>
-  <li>Awards/Recognitions: <%= @user.doctor_awards_recognitions%></li>
-  <li>Professional Experience: <%= @user.doctor_professional_experience%></li>
-  <li>Publications: <%= @user.doctor_publications%></li>
-  <li>Memberships: <%= @user.doctor_memberships%></li>
-  <%if !is_doctor?%>
-    <% if @is_charged %>
-      <%= link_to "Message Doctor", conversations_path(sender_id: current_user.id, recipient_id: @user.id), method: 'post' %>
-    <%else%>
-      <%=link_to "Make Payment",  new_charge_path(doctor_id: @user.id)%>
-    <%end%>
-  <%end%>
+    <div class="panel-heading">
+      <h3 class="panel-title"><%= "Dr. #{@user.firstname} #{@user.lastname}" %></h3>
+    </div>
+    <div class="panel-body">
+      <div class="doctor-image">
+        <%= cl_image_tag( @user.image )%>
+      </div>
+      <div class="doctor-details">
+        Qualifications: <%= @user.doctor_qualifications%> <br>
+        Speciality: <%= @user.doctor_speciality%> <br>
+        Awards/Recognitions: <%= @user.doctor_awards_recognitions%> <br>
+        Professional Experience: <%= @user.doctor_professional_experience%> <br>
+        Publications: <%= @user.doctor_publications%> <br>
+        Memberships: <%= @user.doctor_memberships%> <br>
+      </div>
+      <div class="doctor-actions">
+        <%if !is_doctor?%>
+          <% if @is_charged %>
+            <button type="button" class="btn btn-default btn-sm">
+              <span class="glyphicon glyphicon-envelope" aria-hidden="true"></span><%= link_to " Message", conversations_path(sender_id: current_user.id, recipient_id: @user.id), method: 'post' %>
+            </button>
+          <%else%>
+            <button type="button" class="btn btn-default btn-sm">
+              <span class="glyphicon glyphicon-send" aria-hidden="true"></span><%=link_to " Payment", new_charge_path(doctor_id: @user.id)%>
+            </button>
+          <%end%>
+        <%end%>
+    </div>
 <%else%>
-  <li>First Name: <%= @user.firstname %></li>
-  <li>Last Name: <%= @user.lastname %></li>
-  <li>Email : <%= @user.email %></li>
-  <li>Date of birth: <%= @user.dob%></li>
-  <li>Age : <%= ((Date.today - @user.dob).to_i / 365.25).ceil %> Years</li>
+<div class="panel-body">
+  <div class="doctor-image">
+    <%= cl_image_tag( @user.image )%>
+  </div>
+  <div class="doctor-details">
+    First Name: <%= @user.firstname %> <br>
+    Last Name: <%= @user.lastname %> <br>
+    Email : <%= @user.email %> <br>
+    Date of birth: <%= @user.dob%> <br>
+    Age : <%= ((Date.today - @user.dob).to_i / 365.25).ceil %> Years <br>
+  </div>
 <%end%>
-</ul>
+</div>

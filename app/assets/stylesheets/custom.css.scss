@@ -1,2 +1,33 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
+
+.doctor-image, .doctor-details {
+  display: inline-block;
+}
+
+.btn {
+  color: #333;
+  background-color: grey;
+  border-color: grey;
+}
+
+.btn:hover {
+    background-color: black;
+    border-color: black;
+    color: white;
+}
+
+.btn-primary:hover {
+  color: #fff;
+  background-color: black;
+  border-color: black;
+}
+
+a {
+  color: white;
+  text-decoration: none;
+}
+a:hover, a:focus {
+  color: white;
+  text-decoration: none;
+}
