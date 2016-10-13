@@ -51,6 +51,10 @@ class MessagesController < ApplicationController
     redirect_to @conversation.messages
   end
 
+  def generator
+    render :json => @generated_name
+  end
+
 private
   def message_params
     params.require(:message).permit(:body, :user_id, :images)

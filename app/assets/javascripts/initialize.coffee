@@ -8,3 +8,5 @@ jQuery(document).on 'turbolinks:load', ->
   })
 
   $(".alert-error").hide().fadeIn(200).delay(4000).fadeOut(800);
+
+  
