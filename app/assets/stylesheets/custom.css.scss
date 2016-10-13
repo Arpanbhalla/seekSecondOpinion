@@ -132,12 +132,23 @@ input:focus { box-shadow: inset 0 -5px 45px rgba(100,100,100,0.4), 0 1px 1px rgb
 		margin-top: -22px;
 }
 .background_text{
+
+
 	width: auto;
 	height: 100vh;
 	background-color: white;
 
 	padding: 10% 10% 10% 10%;
 
+}
+.working_flow{
+	background-image: image_url('seekSecondOpinion.png');
+	background-size: contain;
+	background-repeat: no-repeat;
+	height: 100vh;
+	margin: 0 auto;
+	// height: 10%;
+	// width: 30%;
 }
 .background_text, .background_image, .third_background {
 	display: block;
