@@ -5,12 +5,12 @@
 #  image           :text
 #  password_digest :text
 User.destroy_all
-u1 = User.create :firstname => "Arpan",
-                 :lastname => "Bhalla",
-                 :email => "arpanbhalla@gmail.com",
-                 :dob => '3/9/1984',
-                 :password => "chicken",
-                 :password_confirmation => "chicken",
+u1 = User.create :firstname => "admin",
+                 :lastname => "user",
+                 :email => "admin@gmail.com",
+                 :dob => '14/10/2016',
+                 :password => "fish",
+                 :password_confirmation => "fish",
                  :admin => true
 
 u2 = User.create :firstname => "John",
