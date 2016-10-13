@@ -123,3 +123,41 @@ input:focus { box-shadow: inset 0 -5px 45px rgba(100,100,100,0.4), 0 1px 1px rgb
 .alert-error {
   @extend .alert-danger;
 }
+
+.background_image {
+		background-image: image_url('background.jpg');
+		background-size: cover;
+		width: auto;
+		height: 100vh;
+
+}
+.background_text{
+	width: auto;
+	height: 100vh;
+	background-color: white;
+
+	padding: 10% 10% 10% 10%;
+
+}
+.background_text, .background_image,.third_background {
+	display: block;
+
+}
+
+.third_background{
+	width: auto;
+	height: 50vh;
+	background-color: #E0F3FB;
+}
+
+.footer {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  padding: 1rem;
+  background-color: #222222;
+  text-align: center;
+	width: 100%;
+	height: 7.5%;
+}
