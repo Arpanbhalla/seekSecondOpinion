@@ -6,3 +6,5 @@ jQuery(document).on 'turbolinks:load', ->
       fade: true,
       cssEase: 'linear'
   })
+
+  $(".alert-error").hide().fadeIn(200).delay(4000).fadeOut(800);

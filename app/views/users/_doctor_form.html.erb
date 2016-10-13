@@ -1,42 +1,33 @@
-<%= form_for(@user, :html => {:multipart => true }) do |f| %>
+<div class="login">
 
-  <%= f.label :firstname %>
-  <%= f.text_field :firstname %><br>
+  <%= form_for(@user, :html => {:multipart => true }) do |f| %>
 
-  <%= f.label :lastname %>
-  <%= f.text_field :lastname %><br>
+    <%= f.text_field :firstname, :placeholder => "First Name" %><br>
 
-  <%= f.label :email %>
-  <%= f.email_field :email %><br>
+    <%= f.text_field :lastname, :placeholder => "Last Name"%><br>
 
-  <%= f.label :image %>
-  <%= f.cl_image_upload :image%><br>
+    <%= f.email_field :email, :placeholder => "Email"  %><br>
 
-  <%= f.label :doctor_qualifications %>
-  <%= f.text_field :doctor_qualifications %><br>
+    <%= f.text_field :doctor_qualifications, :placeholder => "Qualifications" %><br>
 
-  <%= f.label :doctor_speciality %>
-  <%= f.text_field :doctor_speciality %><br>
+    <%= f.text_field :doctor_speciality, :placeholder => "Speciality"  %><br>
 
-  <%= f.label :doctor_professional_experience %>
-  <%= f.text_field :doctor_professional_experience %><br>
+    <%= f.text_field :doctor_professional_experience, :placeholder => "Professional Experience"  %><br>
 
-  <%= f.label :doctor_awards_recognitions %>
-  <%= f.text_field :doctor_awards_recognitions %><br>
+    <%= f.text_field :doctor_awards_recognitions, :placeholder => "Awards & Recognition"  %><br>
 
-  <%= f.label :doctor_memberships %>
-  <%= f.text_field :doctor_memberships %><br>
+    <%= f.text_field :doctor_memberships, :placeholder => "Memberships" %><br>
 
-  <%= f.label :doctor_publications %>
-  <%= f.text_field :doctor_publications %><br>
+    <%= f.text_field :doctor_publications, :placeholder => "Publications" %><br>
 
-  <%= f.label :password %>
-  <%= f.password_field :password %><br>
+    <%= f.password_field :password, :placeholder => "Password", :required => true %><br>
 
-  <%= f.label :password_confirmation %>
-  <%= f.password_field :password_confirmation %><br>
+    <%= f.password_field :password_confirmation, :placeholder => "Confirm Password", :required => true %><br>
 
-  <%= f.text_field :doctor, value: true, type: "hidden"  %>
+    <%= f.text_field :doctor, value: true, type: "hidden"  %>
 
-  <%= f.submit "Create Doctor" %>
-<% end %>
+    <%= f.cl_image_upload :image, :placeholder => "Avatar"  %><br>
+
+    <%= f.submit "Create Doctor",:class => "btn btn-primary btn-block btn-lg" %>
+  <% end %>
+</div>

@@ -27,6 +27,7 @@ rescue Stripe::CardError => e
   flash[:error] = e.message
   redirect_to conversations_path(sender_id: current_user.id, recipient_id: @user.id), method: 'post'
 end
+
 private
 def charge_params
   params.require(:charge).permit(:user_id, :doctor_id)
