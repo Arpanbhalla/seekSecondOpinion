@@ -29,9 +29,9 @@
 <% end %>
 
 <%= form_for [@conversation, @message], html: {class: "ui reply form", :multipart => true} do |f| %>
-<%= f.cktext_area :body, class: "form-control", ckeditor: { language: 'en'} %> <br>
+<%= f.cktext_area :body, class: "form-control", ckeditor: { language: 'en'} %>
 <%= f.text_field :user_id, value: current_user.id, type: "hidden"  %>
-<p>
+<br> <p>
   <%= f.file_field :images, :multiple => true %>
 </p>
 
