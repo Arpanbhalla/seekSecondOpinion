@@ -16,6 +16,7 @@
       Memberships: <%= doctor.doctor_memberships%> <br>
     </div>
     <div class="doctor-actions" class="btn-group" role="group" aria-label="...">
+
       <%if is_admin?%>
         <td>
           <%= link_to edit_user_path(doctor), class: 'btn btn-default btn-sm' do %>
