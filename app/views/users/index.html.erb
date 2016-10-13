@@ -27,7 +27,7 @@
           <% end %>
         </td>
         <td>
-          <%= link_to user_path(doctor), method: :delete, class: 'btn btn-default btn-sm' do %>
+          <%= link_to user_path(doctor), method: :delete, class: 'btn btn-default btn-sm', data: {confirm: "Are you sure?"} do %>
             <span class="glyphicon glyphicon-trash"></span> Delete
           <% end %>
         </td>
