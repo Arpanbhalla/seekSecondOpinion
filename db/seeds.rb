@@ -37,9 +37,7 @@ d1 = User.create :firstname => "Pooja",
                  Well experienced in implantation of pace makers
                  Done more than 25 thousand cardiac catheterization including coronary angiogram
                  Competency management of acute coronary patients",
-                 :doctor_professional_experience => "Assistant Professor (Medicine), Nizam's Institute of Medical Sciences, Hyderabad(1976 – 1982)
-                 Assistant Professor (Cardiology), Nizam's Institute of Medical Sciences, Hyderabad(1982 – 1993)
-                 Consultant (Cardiology), Mediciti Hospitals, Hyderabad (1993 – 1997)",
+                 :doctor_professional_experience => "20 yrs",
                  :doctor => true,
                  :email => "pooja@ga.com",
                  :password => "chicken",
@@ -51,9 +49,7 @@ d2 = User.create :firstname => "VK",
                  :doctor_speciality =>"Ophthalmologist",
                  :doctor_expertise => "More than 10 years of experience in Ophthalmology
                  Well experienced in implantation of eyes",
-                 :doctor_professional_experience => "Assistant Professor (Medicine), Nizam's Institute of Medical Sciences, Hyderabad(1976 – 1982)
-                 Assistant Professor (Cardiology), Nizam's Institute of Medical Sciences, Hyderabad(1982 – 1993)
-                 Consultant (Cardiology), Mediciti Hospitals, Hyderabad (1993 – 1997)",
+                 :doctor_professional_experience => "3 yrs",
                  :doctor => true,
                  :email => "vkv@ga.com",
                  :password => "chicken",
