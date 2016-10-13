@@ -20,12 +20,12 @@ class UsersController < ApplicationController
     @is_charged = false
     @user=User.find params[:id]
     if logged_in?
+      @conversations=Conversation.all
       @payment_entry = Charge.find_by(:doctor => @user.id , :user =>current_user.id)
       if @payment_entry.present?
         @is_charged = @payment_entry.payment_charged?
       end
     end
-    @conversations=Conversation.all
   end
 
   def new

@@ -5,6 +5,7 @@
 #  dob             :date
 #  image           :text
 #  password_digest :text -->
+
 <div class="panel panel-default">
   <%if @user.doctor?%>
     <div class="panel-heading">
@@ -14,30 +15,35 @@
       <div class="doctor-image">
         <%= cl_image_tag( @user.image )%>
       </div>
-      <div class="doctor-details">
-        Qualifications: <%= @user.doctor_qualifications%> <br>
-        Speciality: <%= @user.doctor_speciality%> <br>
-        Awards/Recognitions: <%= @user.doctor_awards_recognitions%> <br>
-        Professional Experience: <%= @user.doctor_professional_experience%> <br>
-        Publications: <%= @user.doctor_publications%> <br>
-        Memberships: <%= @user.doctor_memberships%> <br>
-      </div>
+      Qualifications: <%= @user.doctor_qualifications%> <br>
+      Speciality: <%= @user.doctor_speciality%> <br>
+      Awards/Recognitions: <%= @user.doctor_awards_recognitions%> <br>
+      Professional Experience: <%= @user.doctor_professional_experience%> <br>
+      Publications: <%= @user.doctor_publications%> <br>
+      Memberships: <%= @user.doctor_memberships%> <br>
       <div class="doctor-actions">
         <%if !is_doctor?%>
           <% if @is_charged %>
-            <button type="button" class="btn btn-default btn-sm">
-              <span class="glyphicon glyphicon-envelope" aria-hidden="true"></span><%= link_to " Message", conversations_path(sender_id: current_user.id, recipient_id: @user.id), method: 'post' %>
-            </button>
+            <td>
+              <%= link_to conversations_path(sender_id: current_user.id, recipient_id: @user.id), method: 'post' , class: 'btn btn-default btn-sm' do %>
+                <span class="glyphicon glyphicon-envelope"></span> Message
+              <% end %>
+            </td>
           <%else%>
-            <button type="button" class="btn btn-default btn-sm">
-              <span class="glyphicon glyphicon-send" aria-hidden="true"></span><%=link_to " Payment", new_charge_path(doctor_id: @user.id)%>
-            </button>
+            <td>
+              <%= link_to new_charge_path(doctor_id: @user.id), class: 'btn btn-default btn-sm' do %>
+                <span class="glyphicon glyphicon-send"></span> Payment
+              <% end %>
+            </td>
           <%end%>
         <%end%>
     </div>
+  </div>
 <%else%>
-<div class="panel-body">
-  <div class="doctor-details">
+  <div class="panel-heading">
+    <h3 class="panel-title"><%= "#{@user.firstname} #{@user.lastname}" %></h3>
+  </div>
+  <div class="panel-body">
     First Name: <%= @user.firstname %> <br>
     Last Name: <%= @user.lastname %> <br>
     Email : <%= @user.email %> <br>
@@ -45,4 +51,29 @@
     Age : <%= ((Date.today - @user.dob).to_i / 365.25).ceil %> Years <br>
   </div>
 <%end%>
+</div>
+
+
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title"> Ongoing Consultations</h3>
+  </div>
+  <div class="panel-body">
+  <div class="btn-group-vertical" role="group" aria-label="...">
+    <% @conversations.each do |conversation| %>
+      <% if conversation.sender_id == current_user.id || conversation.recipient_id == current_user.id %>
+        <% if conversation.sender_id == current_user.id %>
+          <% recipient = User.find(conversation.recipient_id) %>
+        <% else %>
+          <% recipient = User.find(conversation.sender_id) %>
+        <% end %>
+        <td>
+          <%= link_to conversation_messages_path(conversation), class: 'btn btn-primary btn-large' do %>
+            <span class="glyphicon glyphicon-envelope"></span><%=" #{recipient.firstname}"%>
+          <% end %>
+        </td><br>
+      <% end %>
+    <% end %>
+  </div>
+</div>
 </div>

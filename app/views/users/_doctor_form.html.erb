@@ -1,4 +1,5 @@
-<div class="login">
+<div class="create-new">
+  <h1>Doctor Profile</h1>
 
   <%= form_for(@user, :html => {:multipart => true }) do |f| %>
 
@@ -28,6 +29,7 @@
 
     <%= f.cl_image_upload :image, :placeholder => "Avatar"  %><br>
 
-    <%= f.submit "Create Doctor",:class => "btn btn-primary btn-block btn-lg" %>
+    <%= f.submit "Create Doctor",:class => "btn btn-primary btn-block btn-lg" %><br>
+
   <% end %>
 </div>

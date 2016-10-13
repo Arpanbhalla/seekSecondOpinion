@@ -16,7 +16,7 @@ def create
   charge = Stripe::Charge.create(
     :customer    => customer.id,
     :amount      => @amount,
-    :description => 'Rails Stripe customer',
+    :description => 'Rails Stripe Customer',
     :currency    => 'aud'
   )
   if charge["paid"] == true
@@ -25,7 +25,7 @@ def create
   end
 rescue Stripe::CardError => e
   flash[:error] = e.message
-  redirect_to conversations_path(sender_id: current_user.id, recipient_id: @user.id), method: 'post'
+  redirect_to user_path(@doctor)
 end
 
 private

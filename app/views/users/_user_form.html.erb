@@ -5,9 +5,11 @@
 #  dob             :date
 #  image           :text
 #  password_digest :text -->
-<div class="login">
+<div class="create-new">
+  <h1>New User Profile</h1>
 
   <%= form_for @user do |f| %>
+
     <%= f.text_field :firstname, :placeholder => "First Name" %><br>
 
     <%= f.text_field :lastname, :placeholder => "Last Name" %><br>
@@ -20,7 +22,6 @@
         <span class="glyphicon glyphicon-calendar">
         </span>
       </span>
-
       <script type="text/javascript">
         $(function() {
           $('#datetimepicker1').datetimepicker({

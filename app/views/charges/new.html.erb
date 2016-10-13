@@ -1,3 +1,6 @@
+<div class="stripe">
+  <h3>Consultation Fee (One Time)</h3>
+  <h3>AU$20.00</h3>
 <%= form_tag charges_path do %>
   <article>
     <% if flash[:error].present? %>
@@ -5,9 +8,6 @@
         <p><%= flash[:error] %></p>
       </div>
     <% end %>
-    <label class="amount">
-      <span>Amount: AU$20.00</span>
-    </label>
     <%= hidden_field_tag :doctor_id, @doctor.id %>
   </article>
 
@@ -17,3 +17,4 @@
           data-amount="2000"
           data-locale="auto"></script>
 <% end %>
+</div>
