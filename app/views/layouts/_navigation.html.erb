@@ -10,19 +10,12 @@
       </button>
       <a class="navbar-brand" href="/">2nd Opinion</a>
     </div>
-    <ul class="nav navbar-nav">
-      <% if logged_in? %>
-        <% if !is_doctor? %>
-          <li><%= link_to "All Doctors", users_path %></li>
-          <% if is_admin? %>
-            <li><%= link_to 'New Doctor', new_user_path %></li>
-          <%end%>
-      <% end %>
-    </ul>
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
     <ul class="nav navbar-nav navbar-right">
+      <% if logged_in? %>
       <li class="dropdown">
         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-          <%="#{current_user.firstname}"%> <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+          <%="#{current_user.firstname.capitalize}"%> <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
         </a>
         <ul class="dropdown-menu">
           <li><%= link_to "Mailbox", conversations_path%></li>
@@ -36,6 +29,14 @@
         </ul>
       </li>
     </ul>
+    <ul class="nav navbar-nav">
+        <% if !is_doctor? %>
+          <li><%= link_to "All Doctors", users_path %></li>
+          <% if is_admin? %>
+            <li><%= link_to 'New Doctor', new_user_path %></li>
+          <%end%>
+      <% end %>
+    </ul>
     <% else %>
     <ul class="nav navbar-nav navbar-right">
       <li><%= link_to "Log in", login_path %></li>
@@ -43,4 +44,5 @@
     </ul>
     <% end %>
   </div>
+</div>
 </nav>
