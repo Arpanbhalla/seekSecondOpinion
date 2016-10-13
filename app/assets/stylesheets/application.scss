@@ -51,12 +51,24 @@
  left: 310px;
 }
 
-img {
-  width : 70%;
-  height :170px;
-  border-radius: 100px;
-  border: 1px solid black;
+.doctor-image {
+  width: 200px;
+	height: 200px;
+	border-radius: 150px;
+	-webkit-border-radius: 150px;
+	-moz-border-radius: 150px;
+	background: url(http://link-to-your/image.jpg) no-repeat;
+	box-shadow: 0 0 8px rgba(0, 0, 0, .8);
+	-webkit-box-shadow: 0 0 8px rgba(0, 0, 0, .8);
+	-moz-box-shadow: 0 0 8px rgba(0, 0, 0, .8);
+	}
+.media .media-left {
+  display: inline-block;
 }
+.doctor-details {
+  margin-top: 5%;
+}
+
 
 .doctor-actions {
   margin-left: 0.25%;
