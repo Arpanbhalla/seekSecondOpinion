@@ -67,6 +67,7 @@ class UsersController < ApplicationController
     @user = User.find params[:id]
     @user.destroy
     redirect_to users_path
+
   end
 
   private
