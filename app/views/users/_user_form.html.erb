@@ -5,9 +5,6 @@
 #  dob             :date
 #  image           :text
 #  password_digest :text -->
-<div class="create-new">
-  <h1>New User Profile</h1>
-
   <%= form_for @user do |f| %>
 
     <%= f.text_field :firstname, :placeholder => "First Name" %><br>
@@ -17,7 +14,7 @@
     <%= f.email_field :email, :placeholder => "Email" %><br>
 
     <div class='input-group date' id='datetimepicker1'>
-      <%= f.text_field :dob, :placeholder => "Date of Birth"%>
+      <%= f.text_field :dob, :placeholder => "Date of Birth",:required => true %>
       <span class="input-group-addon">
         <span class="glyphicon glyphicon-calendar">
         </span>
@@ -37,5 +34,3 @@
 
     <%= f.submit "Submit", :class => "btn btn-primary btn-block btn-lg" %>
   <% end %>
-
-</div>
