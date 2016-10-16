@@ -9,7 +9,17 @@ class UsersController < ApplicationController
 
   def index
     @users=User.all
-    @doctors=@users.where(:doctor=>true)
+    @all_doctors=@users.where(:doctor=>true)
+    if params[:search]
+      @search_text="%#{params[:search]}%"
+      @doctors = @all_doctors.where("lower(doctor_speciality) LIKE ?", @search_text.downcase).order("created_at DESC")
+    else
+      @doctors = @all_doctors.all.order('created_at DESC')
+    end
+  end
+
+  def search
+
   end
 
   def edit
