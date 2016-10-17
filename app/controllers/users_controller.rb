@@ -7,6 +7,7 @@ class UsersController < ApplicationController
   #  image           :text
   #  password_digest :text
 
+
   def index
     @users=User.all
     @all_doctors=@users.where(:doctor=>true)

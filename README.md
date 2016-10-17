@@ -1,44 +1,59 @@
 Second opinion
 
-Second opinion is a concept project which links specilist doctors with the patients who woild like to seek opinion regarding their ongoing treatment.
+This is individual Project three made as a part of General Assembly (Wed Development Immersive - 16) course.
+I tried to create a platform matching patients who primarily want to seek second opinion on their present medical condition with specialist. This project was made within a week’s time.
 
-There are three kinds of users
-1. Admin
+Background
 
-Libraries
+The requirements for the project: Have at least 3 models (more if they make sense) – one representing someone using your application, and one that represents the main functional idea for your app Include sign up/log in functionality, with encrypted passwords & an authorization flow Have complete RESTful routes for at least one of your resources with GET, POST, PUT, PATCH, and DELETE Utilize an ORM to create a database table structure and interact with your relationally-stored data.
 
-    jQuery
-    sweetalert
+Result
 
-Features
+In total, four models were created:
 
-The game is played on a grid that has 3 squares by 3 squares. The choice is between player one i.e.. "X" and second player "O". Players take turns putting their marks in empty squares. The first player to get 3 of her marks in a row (up, down, across, or diagonally) is the winner.
-How to view
+Users
+Messages
+Conversations
+Charges
 
-Play it here
+Three different types of users were extracted from Users model i.e. Admin, Patient & Doctor. Different actions and authorizations of the user were separated with the help of the helper method.
 
-Fork
-Approach
+Actions and authorizations for Admin: create, edit, delete doctor.
 
-The game is structured keeping in mind the analogy , Html(Bones) and css(skin) and JavaScript(brain) :
+Actions and authorizations for Patient: can signup, search doctor, contact doctor once doctor's fees of $20.00 has ben paid. once Payment is done conversation gateway between doctor and patient would open. Patient can also attach the reports with the message. Also, patient can contact many doctors.
 
-Steps for making the brain and connecting it to bones and skin :
+Actions and authorizations for Doctor: can respond to patients questions and also attach photographs a
 
-    make click event
-    make win sequence array
-    make two empty arrays for pushing the values of clicks from playerOne and playerTwo.
-    make function for winning
-    Function to find the winner.
-    Function for the elementPressed in the table. Following were included in the function:
-        check if its player one or player two (by using mod operator).
-        push value in the respective empty player arrays. - push command.
-        called function () "findWinner in the if statement and sort it in ascending order by using sort() method for comparison"
-    Function for resetting the board & new game. the main difference between the two is when new game is clicked it resets games won counter.
+Github was used for version control. I am proud to deliver this within a week.
 
-Helpful Resources
+How to view app
 
-    http://api.jquery.com/jquery.each/
-    https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach
-    http://blog.idojo.co/the-best-alternative-for-javascript-alert/
+Access it here: https://seeksecondopinion.herokuapp.com/
+Clone / fork my repo: https://github.com/Arpanbhalla/seekSecondOpinion
 
-Thanks for stopping by, and I hope you enjoy the game!
+Technology Used:
+
+Ruby on Rails
+Ruby
+Ajax
+JavaScript
+JQuery
+HTML5
+CSS3
+
+Libraries / Plugins / APIs Used
+
+Gems
+
+Bootstrap
+Cloudinary
+Slick
+Bcrypt, '~> 3.1.7'
+Ckeditor
+Stripe
+
+
+Future Inclusions
+
+Responsive design.
+ 
