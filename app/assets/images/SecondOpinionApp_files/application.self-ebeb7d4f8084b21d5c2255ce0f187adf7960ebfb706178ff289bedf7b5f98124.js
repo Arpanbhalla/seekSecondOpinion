@@ -10,25 +10,26 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //
-//= require jquery
-//= require jquery_ujs
-//= require turbolinks
-//= require bootstrap-sprockets
-//= require ckeditor/init
-//= require jquery.slick
-//= require moment
-//= require bootstrap-datetimepicker
-//= require_tree .
+
+
+
+
+
+
+
+
+
 
 $(document).ready(function() {
-  $('#how_it_works').on('click',function () {
-    var target = this.hash;
-    var $target = $('#anything');
+      $('#how_it_works').on('click',function () {
+            var target = this.hash;
+            var $target = $('#anything');
 
-  $('html, body').stop().animate({
-      'scrollTop': $target.offset().top
-  }, 900, 'swing', function () {
-      window.location.hash = target;
-  });
-  });
+
+	    $('html, body').stop().animate({
+	        'scrollTop': $target.offset().top
+	    }, 900, 'swing', function () {
+	        window.location.hash = target;
+	    });
+      });
 });
