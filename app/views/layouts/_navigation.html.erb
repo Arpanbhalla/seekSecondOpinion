@@ -16,8 +16,6 @@
     <ul class="nav navbar-nav navbar-right">
 
       <% if logged_in? && !is_doctor? %>
-
-
         <form class="navbar-form navbar-left" role="search">
           <div class="form-group">
             <%= form_tag(users_path,:doctor=>true, :method => "get", id: "search-form") do %>

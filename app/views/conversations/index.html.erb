@@ -12,8 +12,8 @@
             <% recipient = User.find(conversation.sender_id) %>
           <% end %>
           <td>
-            <%= link_to conversation_messages_path(conversation), class: 'btn btn-primary btn-large' do %>
-              <span class="glyphicon glyphicon-envelope"></span><%=" #{recipient.firstname}"%>
+            <%= link_to conversation_messages_path(conversation), class: 'btn btn-primary' do %>
+              <span class="badge">3</span><%=" #{recipient.firstname}"%>
             <% end %>
           </td><br>
         <% end %>
