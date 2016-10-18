@@ -1,59 +1,77 @@
-Second opinion
+# Second Opinion
 
-This is individual Project three made as a part of General Assembly (Wed Development Immersive - 16) course.
-I tried to create a platform matching patients who primarily want to seek second opinion on their present medical condition with specialist. This project was made within a week’s time.
+This is an individual project made as a part of General Assembly's Web Development Immersive - Batch 16.
+I tried to create a platform for patients who primarily want to seek a second opinion on their present medical condition with a specialist.
+This project was made within a week’s time.
 
-Background
+### Background
 
-The requirements for the project: Have at least 3 models (more if they make sense) – one representing someone using your application, and one that represents the main functional idea for your app Include sign up/log in functionality, with encrypted passwords & an authorization flow Have complete RESTful routes for at least one of your resources with GET, POST, PUT, PATCH, and DELETE Utilize an ORM to create a database table structure and interact with your relationally-stored data.
+Requirements for the project
+* Have at least 3 models (more if they make sense)
+  * one representing someone using your application
+  * one that represents the main functional idea for your app.
+* Include sign up/log in functionality, with encrypted passwords & an authorisation flow.
+* Have complete RESTful routes for at least one of your resources with GET, POST, PUT, PATCH, and DELETE.
+* Utilize an ORM to create a database table structure and interact with your relationally-stored data.
 
-Result
+### Result
 
-In total, four models were created:
+The project uses four models:
 
-Users
-Messages
-Conversations
-Charges
+* Users
+  * For User Profile
+  * Three different types of users were extracted
+    * Admin
+    * Patient
+    * Doctor
+  * Different actions and authorisations of the user profiles were separated with the help of the helper methods
+    * Actions and authorisations for Admin
+      * Create, Edit and Delete a Doctor Profile
+      * View and Edit own Profile
+    * Actions and authorisations for Patient
+      * Signup
+      * Search Doctor based on Speciality
+      * Contact Doctor once fees of $20.00 has been paid
+      * Send messages/reports to Doctor
+    * Actions and authorisations for Doctor
+      * View and Respond to patients' messages
+      * View own Profile
 
-Three different types of users were extracted from Users model i.e. Admin, Patient & Doctor. Different actions and authorizations of the user were separated with the help of the helper method.
+* Messages
+  * For messages exchanged between Patient and Doctor.
 
-Actions and authorizations for Admin: create, edit, delete doctor.
 
-Actions and authorizations for Patient: can signup, search doctor, contact doctor once doctor's fees of $20.00 has ben paid. once Payment is done conversation gateway between doctor and patient would open. Patient can also attach the reports with the message. Also, patient can contact many doctors.
+* Conversations
+  * For conversational channel between Patient and Doctor.
 
-Actions and authorizations for Doctor: can respond to patients questions and also attach photographs a
+
+* Charges
+  * For payments made towards seeking a second opinion.
 
 Github was used for version control. I am proud to deliver this within a week.
 
-How to view app
 
-Access it here: https://seeksecondopinion.herokuapp.com/
-Clone / fork my repo: https://github.com/Arpanbhalla/seekSecondOpinion
+#### How to view
 
-Technology Used:
+[Access it here](https://seeksecondopinion.herokuapp.com/)
 
-Ruby on Rails
-Ruby
-Ajax
-JavaScript
-JQuery
-HTML5
-CSS3
+[Clone or fork](https://github.com/Arpanbhalla/seekSecondOpinion)
 
-Libraries / Plugins / APIs Used
+#### Technology Used:
 
-Gems
+* Rails
+* Ruby
+* Ajax
+* JavaScript
+* jQuery
+* HTML5
+* CSS3
 
-Bootstrap
-Cloudinary
-Slick
-Bcrypt, '~> 3.1.7'
-Ckeditor
-Stripe
+#### Libraries / Plugins / APIs / Gems Used
 
-
-Future Inclusions
-
-Responsive design.
- 
+* Bootstrap
+* Cloudinary
+* Slick
+* Bcrypt, '~> 3.1.7'
+* Ckeditor
+* Stripe
