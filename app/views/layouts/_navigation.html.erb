@@ -9,20 +9,22 @@
                 <span class="icon-bar"></span>
             </button>
             <a class="navbar-brand" href="/">
-                <img class="img-responsive brand-img" alt="Brand" src="../medical-icon-vector.jpg">
+                <img class="img-responsive brand-img" alt="Brand" src="http://res.cloudinary.com/dbgvixfy4/image/upload/v1476756876/medical-icon-vector_sfljhj.png">
             </a>
         </div>
     <div class="collapse navbar-collapse" id="collapsed-navbar">
         <ul class="nav navbar-nav navbar-right">
 
-                <% if logged_in? && !is_doctor? %>
+                <% if logged_in? && !is_doctor? && current_page?(users_path) %>
 
                 <form class="navbar-form navbar-left" role="search">
-                    <div class="form-group">
-                        <%= form_tag(users_path,:doctor=>true, :method => "get", id: "search-form") do %>
+                    <div class="input-group">
+                      <%= form_tag(users_path, :doctor=>true, :method => "get", id: "search-form") do %>
                         <%= text_field_tag :search, params[:search], placeholder: "Search Specialist", class: "form-control" %>
-                    <button type="submit" <%= submit_tag "Search", class: "btn btn-primary-lg" %>Search</button>
                     <% end %>
+                    <span class="input-group-btn">
+                      <button type="submit" <%= submit_tag "Search", class: "btn btn-default" %>Search</button>
+                    </span>
                 </div>
             </form>
 
