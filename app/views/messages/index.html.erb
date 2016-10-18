@@ -2,39 +2,49 @@
 <%= link_to 'Show Previous', '?m=all' %> <hr>
 <% end %>
 
+
 <% @messages.each do |message| %>
-    <% if message.body %>
-      <% user = User.find(message.user_id) %>
-      <%if user.doctor?%>
-        <div class="panel panel-primary">
-          <div class="panel-heading">
-            <h3 class="panel-title"><%= "Dr. #{user.firstname.capitalize} #{user.lastname.capitalize} (#{message.message_time}):" %></h3>
-          </div>
-      <% else %>
-        <div class="panel panel-info">
-          <div class="panel-heading">
-            <h3 class="panel-title"><%= "#{user.firstname.capitalize} (#{message.message_time}):" %></h3>
-          </div>
-      <% end %>
-      <div class="panel-body"><%= message.body.html_safe  %></div> <br>
-      <%if message.images?%>
-        <div class="scroller">
-          <% message.images.each do |image| %>
-            <%= cl_image_tag(image, class: 'user_reports') %>
+      <% if message.body %>
+        <% user = User.find(message.user_id) %>
+        <%if user.doctor?%>
+        <div class="row-fluid">
+          <div class="col-md-offset-2 col-md-8"> <br>
+            <div class="panel panel-primary">
+              <div class="panel-heading">
+                <h3 class="panel-title"><%= "Dr. #{user.firstname.capitalize} #{user.lastname.capitalize} (#{message.message_time}):" %></h3>
+              </div>
+          <% else %>
+          <div class="row-fluid">
+            <div class="col-md-offset-2 col-md-8"> <br>
+            <div class="panel panel-info">
+              <div class="panel-heading">
+                <h3 class="panel-title"><%= "#{user.firstname.capitalize} (#{message.message_time}):" %></h3>
+              </div>
           <% end %>
-        </div>
-      <%end%>
+          <div class="panel-body"><%= message.body.html_safe  %></div> <br>
+          <%if message.images?%>
+            <div class="scroller">
+              <% message.images.each do |image| %>
+                <%= cl_image_tag(image, class: 'user_reports') %>
+              <% end %>
+            </div>
+          <%end%>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+<% end %>
+
+<div class="row-fluid">
+  <div class="col-md-offset-2 col-md-8"> <br>
+    <%= form_for [@conversation, @message], html: {class: "ui reply form", :multipart => true} do |f| %>
+      <%= f.cktext_area :body, class: "form-control", ckeditor: { language: 'en'} %>
+      <%= f.text_field :user_id, value: current_user.id, type: "hidden"  %>
+      <br> <p>
+        <%= f.file_field :images, :multiple => true %>
+      </p>
+      <%= f.submit "Send", class: "btn btn-primary btn-large" %>
     <% end %>
   </div>
-<% end %>
-
-<%= form_for [@conversation, @message], html: {class: "ui reply form", :multipart => true} do |f| %>
-<%= f.cktext_area :body, class: "form-control", ckeditor: { language: 'en'} %>
-<%= f.text_field :user_id, value: current_user.id, type: "hidden"  %>
-<br> <p>
-  <%= f.file_field :images, :multiple => true %>
-</p>
-
-<%= f.submit "Send", class: "btn btn-primary btn-large" %>
-
-<% end %>
+</div>
