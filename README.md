@@ -56,4 +56,3 @@ Stripe
 Future Inclusions
 
 Responsive design.
- 
