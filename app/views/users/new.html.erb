@@ -1,11 +1,7 @@
 <%if is_admin? %>
-  <div class="create-new">
-    <h1>Create Doctor Profile</h1>
-    <%= render :partial => 'doctor_form' %>
-  </div>
+  <h1>Create Doctor Profile</h1>
+  <%= render :partial => 'doctor_form' %>
 <%else%>
-  <div class="create-new">
-    <h1>New User Profile</h1>
-    <%= render :partial => 'user_form' %>
-  </div>
+  <h1>New User Profile</h1>
+  <%= render :partial => 'user_form' %>
 <%end%>
