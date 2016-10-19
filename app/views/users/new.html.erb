@@ -1,7 +1,9 @@
-<%if is_admin? %>
-  <h1>Create Doctor Profile</h1>
-  <%= render :partial => 'doctor_form' %>
-<%else%>
-  <h1>New User Profile</h1>
-  <%= render :partial => 'user_form' %>
-<%end%>
+<div class="modal-body row">
+  <%if is_admin? %>
+    <h1>Create Doctor Profile</h1><br>
+    <%= render :partial => 'doctor_form' %>
+  <%else%>
+    <h1>New User Profile</h1><br>
+    <%= render :partial => 'user_form' %>
+  <%end%>
+</div>

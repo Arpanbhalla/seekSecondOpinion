@@ -6,75 +6,82 @@
 #  image           :text
 #  password_digest :text -->
 
-<div class="panel panel-default">
+<div class="container-fluid">
+  <div class="modal-body">
   <%if @user.doctor?%>
-    <div class="panel-heading">
-      <h3 class="panel-title"><%= "Dr. #{@user.firstname} #{@user.lastname}" %></h3>
-    </div>
-    <div class="panel-body">
-        <%= cl_image_tag( @user.image, :width => 100, :height => 150, :crop => :fill, :class => "media" )%>
-      <div class="media">
-        Qualifications: <%= @user.doctor_qualifications%> <br>
-        Speciality: <%= @user.doctor_speciality%> <br>
-        Awards/Recognitions: <%= @user.doctor_awards_recognitions%> <br>
-        Professional Experience: <%= @user.doctor_professional_experience%> <br>
-        Publications: <%= @user.doctor_publications%> <br>
-        Memberships: <%= @user.doctor_memberships%> <br>
-      </div>
-      <div class="doctor-actions">
-        <%if !is_doctor?%>
-          <% if @is_charged %>
-            <td>
-              <%= link_to conversations_path(sender_id: current_user.id, recipient_id: @user.id), method: 'post' , class: 'btn btn-default btn-sm' do %>
-                <span class="glyphicon glyphicon-envelope"></span> Message
-              <% end %>
-            </td>
-          <%else%>
-            <td>
-              <%= link_to new_charge_path(doctor_id: @user.id), class: 'btn btn-default btn-sm' do %>
-                <span class="glyphicon glyphicon-send"></span> Payment
-              <% end %>
-            </td>
+    <div class="row">
+      <div class="modal-body row col-md-offset-3 col-md-6 text-center"><br>
+        <h1><%= "Dr. #{@user.firstname} #{@user.lastname}" %></h1>
+        <%= cl_image_tag( @user.image, :width => 100, :height => 150, :crop => :fill)%>
+        <div class="doctor-actions">
+          <%if !is_doctor?%>
+            <% if @is_charged %>
+              <td>
+                <%= link_to conversations_path(sender_id: current_user.id, recipient_id: @user.id), method: 'post' , class: 'btn btn-default btn-sm' do %>
+                  <span class="glyphicon glyphicon-envelope"></span> Message
+                <% end %>
+              </td>
+            <%else%>
+              <td>
+                <%= link_to new_charge_path(doctor_id: @user.id), class: 'btn btn-default btn-sm' do %>
+                  <span class="glyphicon glyphicon-send"></span> Payment
+                <% end %>
+              </td>
+            <%end%>
           <%end%>
-        <%end%>
+      </div>
+      <ul class="list-group">
+        <li class="list-group-item transparent">Qualifications: <%= @user.doctor_qualifications%> </li>
+        <li class="list-group-item transparent">Speciality: <%= @user.doctor_speciality%> </li>
+        <li class="list-group-item transparent">Awards/Recognitions: <%= @user.doctor_awards_recognitions%> </li>
+        <li class="list-group-item transparent">Professional Experience: <%= @user.doctor_professional_experience%> </li>
+        <li class="list-group-item transparent">Publications: <%= @user.doctor_publications%> </li>
+        <li class="list-group-item transparent">Memberships: <%= @user.doctor_memberships%> </li>
+      </ul>
     </div>
   </div>
-<%else%>
-  <div class="panel-heading">
-    <h3 class="panel-title"><%= "#{@user.firstname} #{@user.lastname}" %></h3>
+  <%else%>
+    <div class="modal-body row col-md-offset-4 col-md-4 text-center"><br>
+      <h1><%= "#{@user.firstname.capitalize} #{@user.lastname.capitalize}" %></h1><br>
+      <ul class="list-group">
+        <li class="list-group-item transparent">First Name: <%= @user.firstname %></li>
+        <li class="list-group-item transparent">Last Name: <%= @user.lastname %></li>
+        <li class="list-group-item transparent">Email : <%= @user.email %></li>
+        <li class="list-group-item transparent">Date of birth: <%= @user.dob%></li>
+        <li class="list-group-item transparent">Age : <%= ((Date.today - @user.dob).to_i / 365.25).ceil %> Years</li>
+      </ul>
+    </div>
   </div>
-  <div class="panel-body">
-    First Name: <%= @user.firstname %> <br>
-    Last Name: <%= @user.lastname %> <br>
-    Email : <%= @user.email %> <br>
-    Date of birth: <%= @user.dob%> <br>
-    Age : <%= ((Date.today - @user.dob).to_i / 365.25).ceil %> Years <br>
-  </div>
-<%end%>
 </div>
-
-<%if is_doctor?%>
-<div class="panel panel-default">
-  <div class="panel-heading">
-    <h3 class="panel-title"> Ongoing Consultations</h3>
-  </div>
-  <div class="panel-body">
-  <div class="btn-group-vertical" role="group" aria-label="...">
-    <% @conversations.each do |conversation| %>
-      <% if conversation.sender_id == current_user.id || conversation.recipient_id == current_user.id %>
-        <% if conversation.sender_id == current_user.id %>
-          <% recipient = User.find(conversation.recipient_id) %>
-        <% else %>
-          <% recipient = User.find(conversation.sender_id) %>
-        <% end %>
-        <td>
-          <%= link_to conversation_messages_path(conversation), class: 'btn btn-primary btn-large' do %>
-            <span class="glyphicon glyphicon-envelope"></span><%=" #{recipient.firstname}"%>
+<%end%>
+<div class="container-fluid">
+  <div class="modal-body">
+    <div class="row">
+      <div class="modal-body row col-md-offset-3 col-md-6 text-center"><br>
+        <h1> Ongoing Consultations</h1>
+      </div>
+      <div class="col-md-offset-3 col-md-6 text-center"><br>
+        <div class="btn-group-vertical center-block" role="group" aria-label="...">
+          <% @conversations.each do |conversation| %>
+            <% if conversation.sender_id == current_user.id || conversation.recipient_id == current_user.id %>
+              <% if conversation.sender_id == current_user.id %>
+                <% recipient = User.find(conversation.recipient_id) %>
+              <% else %>
+                <% recipient = User.find(conversation.sender_id) %>
+              <% end %>
+              <td>
+                <%= link_to conversation_messages_path(conversation), class: 'btn btn-primary btn-large' do %>
+                  <%if current_user.doctor?%>
+                    <span class="glyphicon glyphicon-envelope"></span><%=" #{recipient.firstname.capitalize}"%>
+                  <%else%>
+                    <span class="glyphicon glyphicon-envelope"></span><%=" Dr. #{recipient.firstname.capitalize}"%>
+                  <%end%>
+                <% end %>
+              </td><br>
+            <% end %>
           <% end %>
-        </td><br>
-      <% end %>
-    <% end %>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
-</div>
-<%end%>

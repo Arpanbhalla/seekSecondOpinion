@@ -1,9 +1,9 @@
-<div class="panel panel-default">
-  <div class="panel-heading">
-    <h3 class="panel-title"> Ongoing Consultations</h3>
+<div class="container-fluid">
+  <div class="modal-body row col-md-offset-4 col-md-4 text-center"><br>
+    <h1> Ongoing Consultations</h1>
   </div>
-  <div class="panel-body">
-    <div class="btn-group-vertical" role="group" aria-label="...">
+  <div class="col-md-offset-3 col-md-6 text-center"><br>
+    <div class="btn-group-vertical center-block" role="group" aria-label="...">
       <% @conversations.each do |conversation| %>
         <% if conversation.sender_id == current_user.id || conversation.recipient_id == current_user.id %>
           <% if conversation.sender_id == current_user.id %>
@@ -12,8 +12,12 @@
             <% recipient = User.find(conversation.sender_id) %>
           <% end %>
           <td>
-            <%= link_to conversation_messages_path(conversation), class: 'btn btn-primary' do %>
-              <span class="badge">3</span><%=" #{recipient.firstname}"%>
+            <%= link_to conversation_messages_path(conversation), class: 'btn btn-primary btn-large' do %>
+              <%if current_user.doctor?%>
+                <span class="glyphicon glyphicon-envelope"></span><%=" #{recipient.firstname.capitalize}"%>
+              <%else%>
+                <span class="glyphicon glyphicon-envelope"></span><%=" Dr. #{recipient.firstname.capitalize}"%>
+              <%end%>
             <% end %>
           </td><br>
         <% end %>
