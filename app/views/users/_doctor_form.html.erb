@@ -1,31 +1,25 @@
 <%= form_for(@user, :html => {:multipart => true }) do |f| %>
-
+<div class="col-md-offset-2 col-md-4">
   <%= f.text_field :firstname, :placeholder => "First Name" %><br>
-
   <%= f.text_field :lastname, :placeholder => "Last Name"%><br>
-
   <%= f.email_field :email, :placeholder => "Email"  %><br>
-
-  <%= f.text_field :doctor_qualifications, :placeholder => "Qualifications" %><br>
-
   <%= f.text_field :doctor_speciality, :placeholder => "Speciality"  %><br>
-
-  <%= f.text_field :doctor_professional_experience, :placeholder => "Professional Experience"  %><br>
-
-  <%= f.text_field :doctor_awards_recognitions, :placeholder => "Awards & Recognition"  %><br>
-
-  <%= f.text_field :doctor_memberships, :placeholder => "Memberships" %><br>
-
-  <%= f.text_field :doctor_publications, :placeholder => "Publications" %><br>
-
   <%= f.password_field :password, :placeholder => "Password", :required => true %><br>
-
   <%= f.password_field :password_confirmation, :placeholder => "Confirm Password", :required => true %><br>
-
-  <%= f.text_field :doctor, value: true, type: "hidden"  %>
-
+</div>
+<div class="col-md-4">
+  <%= f.text_field :doctor_qualifications, :placeholder => "Qualifications" %><br>
+  <%= f.text_field :doctor_professional_experience, :placeholder => "Professional Experience"  %><br>
+  <%= f.text_field :doctor_awards_recognitions, :placeholder => "Awards & Recognition"  %><br>
+  <%= f.text_field :doctor_memberships, :placeholder => "Memberships" %><br>
+  <%= f.text_field :doctor_publications, :placeholder => "Publications" %><br>
   <%= f.cl_image_upload :image, :placeholder => "Avatar"  %><br>
-
-  <%= f.submit "Submit",:class => "btn btn-primary btn-block btn-lg" %><br>
+  <%= f.text_field :doctor, value: true, type: "hidden"  %>
+</div>
+<div class="row">
+  <div class="col-md-offset-4 col-md-4">
+    <%= f.submit "Submit",:class => "btn btn-primary btn-block btn-medium" %><br>
+  </div>
+</div>
 
 <% end %>

@@ -7,19 +7,23 @@
     <h3 class="panel-title"><%= "Dr. #{doctor.firstname} #{doctor.lastname}" %></h3>
   </div>
   <div class="panel-body">
-    <div class="media">
-      <%= cl_image_tag( doctor.image, :width => 100, :height => 150, :crop => :fill, :class => "media-left")%>
-    <div class="media-body">
-      Qualifications: <%= doctor.doctor_qualifications%> <br>
-      Speciality: <%= doctor.doctor_speciality%> <br>
-      Awards/Recognitions: <%= doctor.doctor_awards_recognitions%> <br>
-      Professional Experience: <%= doctor.doctor_professional_experience%> <br>
-      Publications: <%= doctor.doctor_publications%> <br>
-      Memberships: <%= doctor.doctor_memberships%> <br>
+    <div class="row">
+      <div class="col-md-4">
+        <%= cl_image_tag( doctor.image, :width => 100, :height => 150, :crop => :fill)%>
+      </div>
+      <div class="col-md-8 list-group">
+        <li class="list-group-item">Qualifications: <%= doctor.doctor_qualifications%> </li>
+        <li class="list-group-item">Speciality: <%= doctor.doctor_speciality%> </li>
+        <li class="list-group-item">Awards/Recognitions: <%= doctor.doctor_awards_recognitions%> </li>
+        <li class="list-group-item">Professional Experience: <%= doctor.doctor_professional_experience%> </li>
+        <li class="list-group-item">Publications: <%= doctor.doctor_publications%> </li>
+        <li class="list-group-item">Memberships: <%= doctor.doctor_memberships%> </li>
+      </div>
     </div>
   </div>
-    <div class="doctor-actions" class="btn-group" role="group" aria-label="...">
+  <div class="text-center">
 
+    <div class="doctor-actions list-group" role="group" aria-label="...">
       <%if is_admin?%>
         <td>
           <%= link_to edit_user_path(doctor), class: 'btn btn-default btn-sm' do %>
@@ -38,6 +42,7 @@
         <% end %>
       </td>
     </div>
+  </div>
 
   </div>
 </div>

@@ -5,32 +5,28 @@
 #  dob             :date
 #  image           :text
 #  password_digest :text -->
-<%= form_for @user do |f| %>
 
-  <%= f.text_field :firstname, :placeholder => "First Name" %><br>
-
-  <%= f.text_field :lastname, :placeholder => "Last Name" %><br>
-
-  <%= f.email_field :email, :placeholder => "Email" %><br>
-
-  <div class='input-group date' id='datetimepicker1'>
-    <%= f.text_field :dob, :placeholder => "Date of Birth",:required => true %>
-    <span class="input-group-addon">
-      <span class="glyphicon glyphicon-calendar">
+<div class="col-md-offset-4 col-md-4">
+  <%= form_for @user do |f| %>
+    <%= f.text_field :firstname, :placeholder => "First Name" %><br>
+    <%= f.text_field :lastname, :placeholder => "Last Name" %><br>
+    <%= f.email_field :email, :placeholder => "Email" %><br>
+    <div class='input-group date' id='datetimepicker1'>
+      <%= f.text_field :dob, :placeholder => "Date of Birth",:required => true %>
+      <span class="input-group-addon">
+        <span class="glyphicon glyphicon-calendar">
+        </span>
       </span>
-    </span>
-    <script type="text/javascript">
-      $(function() {
-        $('#datetimepicker1').datetimepicker({
-          format: 'DD/MM/YYYY'
+      <script type="text/javascript">
+        $(function() {
+          $('#datetimepicker1').datetimepicker({
+            format: 'DD/MM/YYYY'
+          });
         });
-      });
-    </script>
-  </div>
-
-  <%= f.password_field :password, :placeholder => "Password", :required => true %><br>
-
-  <%= f.password_field :password_confirmation, :placeholder => "Confirm Password", :required => true %><br>
-
-  <%= f.submit "Submit", :class => "btn btn-primary btn-block btn-lg" %>
-<% end %>
+      </script>
+    </div>
+    <%= f.password_field :password, :placeholder => "Password", :required => true %><br>
+    <%= f.password_field :password_confirmation, :placeholder => "Confirm Password", :required => true %><br>
+    <%= f.submit "Submit", :class => "btn btn-primary btn-block btn-lg" %>
+  <% end %>
+</div>
