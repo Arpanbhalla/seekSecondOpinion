@@ -1,78 +1,80 @@
-Hello,
+# Second Opinion
 
-thank you for downloading IT Worker.
+This is an individual project made as a part of General Assembly's Web Development Immersive - Batch 16.
+I tried to create a platform for patients who primarily want to seek a second opinion on their present medical condition with a specialist.
+This project was made within a week’s time.
 
+### Background
 
-*Everything is kept simple so you should not have any problems implementing the template. I will try to answer few of the possible questions below.*
+Requirements for the project
+* Have at least 3 models (more if they make sense)
+  * one representing someone using your application
+  * one that represents the main functional idea for your app.
+* Include sign up/log in functionality, with encrypted passwords & an authorisation flow.
+* Have complete RESTful routes for at least one of your resources with GET, POST, PUT, PATCH, and DELETE.
+* Utilize an ORM to create a database table structure and interact with your relationally-stored data.
 
+### Result
 
-**Changing the colour of the theme**
+The project uses four models:
 
-Every colour variant has its appropriate stylesheets located in the /css directory. To change the colour of the template simply change the path in the header of the HTML template, i.e. from *style.default.css* to *style.pink.css*.
+* Users
+  * For User Profile
+  * Three different types of users were extracted
+    * Admin
+    * Patient
+    * Doctor
+  * Different actions and authorisations of the user profiles were separated with the help of the helper methods
+    * Actions and authorisations for Admin
+      * Create, Edit and Delete a Doctor Profile
+      * View and Edit own Profile
+    * Actions and authorisations for Patient
+      * Signup
+      * Search Doctor based on Speciality
+      * Contact Doctor once fees of $20.00 has been paid
+      * Send messages/reports to Doctor
+    * Actions and authorisations for Doctor
+      * View and Respond to patients' messages
+      * View own Profile
 
-
-**Javascript**
-
-Apart from Bootstrap JS components majority of JS is located in /js/front.js. In this file you can change the settings of the owl carousel, google maps settings etc. 
-
-**Google Maps**
-
-Google maps are used on the contact page. If you need just to show location of the company on the map, the only neccessary thing is to change coordinates in the header of contact.html. For further settings and possibilities please consult [Google Maps API documentation](https://developers.google.com/maps/documentation/javascript/).
-
-**Contact form**
-
-To set up contact form:
-
-1. Upload a template to your webhosting or set up HTTP server on your local machine (XAMPP, WAMP or similar).
-2. Make directory php/temp writeable (change attributes to 777)
-3. Edit the options in contact.php file. The most important are: `$from` and `$sendTo`. The rest can remain as it is.
-
-Thank you for downloading!
-
-In case you would need some custom modifications, don't hesitate to get in touch.
-
-ondrique, (ahoj@ondrejsvestka.cz)
-
-## Credits ##
-
-- Bootstrap 3.3 - [http://getbootstrap.com/](http://getbootstrap.com/)
-- Photos for demo purposes [IM FREE](http://www.imcreator.com/free)
-
-**Plugins used in the template**
-
-- Owl Carousel ([http://www.owlgraphic.com/owlcarousel/](http://www.owlgraphic.com/owlcarousel/))
-- jQuery Waypoints ([http://imakewebthings.com/jquery-waypoints/](http://imakewebthings.com/jquery-waypoints/))
-- animate.css ([http://daneden.github.io/animate.css/](http://daneden.github.io/animate.css/))
-- Modernizr ([http://modernizr.com/](http://modernizr.com/)) 
-- Bootstrap Hover Dropdown plugin ([https://github.com/CWSpear/bootstrap-hover-dropdown](https://github.com/CWSpear/bootstrap-hover-dropdown))
-- jQuery scrollTo ([http://demos.flesler.com/jquery/scrollTo/](http://demos.flesler.com/jquery/scrollTo/))
-- gmaps.js ([http://hpneo.github.io/gmaps/](http://hpneo.github.io/gmaps/))
-- Masonry ([http://masonry.desandro.com/](http://masonry.desandro.com/))
-- jQuery Parallax ([http://ianlunn.co.uk/plugins/jquery-parallax](http://ianlunn.co.uk/plugins/jquery-parallax/))
-- jQuery Counter Up ([https://github.com/bfintal/Counter-Up](https://github.com/bfintal/Counter-Up))
-- Nette Framework ([http://nette.org/en/](http://nette.org/en/))
+* Messages
+  * For messages exchanged between Patient and Doctor.
 
 
-**Fonts used in the template**
-
-- Roboto ([https://www.google.com/fonts/specimen/Roboto](https://www.google.com/fonts/specimen/Roboto))
-- Roboto Slab ([http://www.google.com/fonts/specimen/Roboto+Slab](http://www.google.com/fonts/specimen/Roboto+Slab))
-
-**Images**
-
-- Markus Spiske ([https://www.flickr.com/photos/125167502@N02/](https://www.flickr.com/photos/125167502@N02/))
-
-## Changelog ##
-
-    
-    **Version 1.0**
-    
-    Initial release
+* Conversations
+  * For conversational channel between Patient and Doctor.
 
 
+* Charges
+  * For payments made towards seeking a second opinion.
+
+Github was used for version control. I am proud to deliver this within a week.
 
 
+#### How to view
+
+[Access it here](https://seeksecondopinion.herokuapp.com/)
+
+[Clone or fork](https://github.com/Arpanbhalla/seekSecondOpinion)
+
+#### Technology Used:
+
+* Rails
+* Ruby
+* Ajax
+* JavaScript
+* jQuery
+* HTML5
+* CSS3
+
+#### Libraries / Plugins / APIs / Gems Used
 
 
-
-
+Responsive design.
+=======
+* Bootstrap
+* Cloudinary
+* Slick
+* Bcrypt, '~> 3.1.7'
+* Ckeditor
+* Stripe
