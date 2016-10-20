@@ -1,0 +1,18 @@
+
+<!-- <%#= link_to root_path %> -->
+<!--
+#  firstname       :string
+#  lastname        :string
+#  email           :text
+#  dob             :date
+#  image           :text
+#  password_digest :text -->
+<div class="modal-body row">
+<%if is_admin? && @user.doctor?%>
+  <h1>Edit Doctor Profile</h1>
+  <%= render :partial => 'doctor_form' %>
+<%else%>
+  <h1>Edit Profile</h1>
+  <%= render :partial => 'user_form' %>
+</div>
+<%end%>

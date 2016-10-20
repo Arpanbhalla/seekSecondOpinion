@@ -1,0 +1,60 @@
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#collapsed-navbar" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="/">
+        <img class="img-responsive brand-img" alt="Brand" src="http://res.cloudinary.com/dbgvixfy4/image/upload/v1476756876/medical-icon-vector_sfljhj.png">
+      </a>
+    </div>
+    <div class="collapse navbar-collapse" id="collapsed-navbar">
+      <% if logged_in? && !is_doctor? && current_page?(users_path) %>
+        <form class="nav navbar-form navbar-left" role="search">
+        <div class="input-group">
+          <%= form_tag(users_path, :doctor=>true, :method => "get", id: "search-form") do %>
+            <%= text_field_tag :search, params[:search], placeholder: "Search Specialist", class: "form-control" %>
+          <% end %>
+          <span class="input-group-btn">
+            <button type="submit" <%= submit_tag "Search", class: "btn btn-primary"%>Search</button>
+          </span>
+        </div>
+      </form>
+    <% end %>
+      <ul class="nav navbar-nav navbar-right">
+      <% if logged_in? %>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+            <%="#{current_user.firstname.capitalize}"%>
+            <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+          </a>
+          <ul class="dropdown-menu">
+            <% if is_admin? %>
+              <li><%= link_to 'New Doctor', new_user_path %></li>
+            <%end%>
+            <% if !is_doctor? %>
+              <li><%= link_to "All Doctors", users_path %></li>
+              <li role="separator" class="divider"></li>
+            <% end %>
+            <li><%= link_to "View Mailbox", conversations_path%></li>
+            <li><%= link_to "View Profile", user_path(current_user) %></li>
+            <%if !is_doctor?%>
+              <li><%= link_to "Edit Profile", edit_user_path(current_user) %></li>
+            <%end%>
+            <li role="separator" class="divider"></li>
+            <li><%= link_to 'Log out', logout_path, method: :delete %></li>
+          </ul>
+        </ul>
+      <% else %>
+        <ul class="nav navbar-nav navbar-right">
+          <li><%= link_to "Log in", login_path %></li>
+          <li><%= link_to "Sign up", new_user_path %></li>
+        </ul>
+      <% end %>
+    </div>
+  </div>
+</nav>
