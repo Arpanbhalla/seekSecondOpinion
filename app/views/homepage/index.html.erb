@@ -1,9 +1,19 @@
-
 <div class="bg-img-container">
-  <img class="img-responsive" src="http://res.cloudinary.com/dbgvixfy4/image/upload/v1476756893/background_kgjpbs.jpg"/>
+  <div class="header-content">
+    <h1>Connect with specialists from across the globe</h1><br>
+    <p> Your GP thinks you need to talk to a specialist, the next available appointment is a few months away... </p>
+      <p>In three simple steps, get a second opinion for your medical condition!</p><br>
+    <a href="#workflow" class="btn btn-primary btn-homepage">Find Out More</a>
+  </div>
 </div>
 
-<div class="workflow-bg container">
+<div id="workflow" class="workflow-bg container">
+  <p>
+    Drowning in worry while waiting for a specialist's appointment?
+  </p><br>
+  <p>
+    <%= link_to "Sign up", new_user_path %> or <%= link_to "Log in", login_path %> to find a specialist online<br>
+  </p><br>
   <div class="col-md-4 col-xs-4">
     <img class="img-responsive center-block workflow-img" alt="Select Your Specialist" src="http://res.cloudinary.com/dbgvixfy4/image/upload/v1476756877/doc_hev7wg.png"/>
     <p class="workflow-txt text-center">Select Specialist</p>
@@ -21,6 +31,6 @@
 
 <footer class="footer">
   <p>
-    Conceptualized and Created by Arpan Bhalla © 2016 Copyright
+    Conceptualized and Created by Arpan Bhalla <br>© 2016 Copyright
   </p>
 </footer>

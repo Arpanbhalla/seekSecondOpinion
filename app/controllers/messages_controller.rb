@@ -9,12 +9,7 @@ class MessagesController < ApplicationController
 
   def index
     @messages = @conversation.messages
-    if @messages.length > 5
-      @over_five = true
-      @messages = @messages[-10..-1]
-    end
-    if params[:m]
-      @over_five = false
+    if params[:message]
       @messages = @conversation.messages
     end
     if @messages.last
@@ -57,6 +52,6 @@ class MessagesController < ApplicationController
 
 private
   def message_params
-    params.require(:message).permit(:body, :user_id, :images)
+    params.require(:message).permit(:body, :user_id, :images, :read)
   end
 end

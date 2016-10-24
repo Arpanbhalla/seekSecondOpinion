@@ -16,8 +16,19 @@
 //= require ckeditor/init
 //= require jquery.slick
 //= require bootstrap-sprockets
+//= require moment
+//= require bootstrap-datetimepicker
 //= require_tree .
 
 $(document).ready(function() {
+  $('#how_it_works').on('click',function () {
+    var target = this.hash;
+    var $target = $('#anything');
 
+  $('html, body').stop().animate({
+      'scrollTop': $target.offset().top
+  }, 900, 'swing', function () {
+      window.location.hash = target;
+  });
+  });
 });

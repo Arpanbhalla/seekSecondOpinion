@@ -13,6 +13,14 @@
       <div class="modal-body row col-md-offset-3 col-md-6 text-center"><br>
         <h1><%= "Dr. #{@user.firstname} #{@user.lastname}" %></h1>
         <%= cl_image_tag( @user.image, :width => 100, :height => 150, :crop => :fill)%>
+        <ul class="list-group">
+          <li class="list-group-item transparent">Qualifications: <%= @user.doctor_qualifications%> </li>
+          <li class="list-group-item transparent">Speciality: <%= @user.doctor_speciality%> </li>
+          <li class="list-group-item transparent">Awards/Recognitions: <%= @user.doctor_awards_recognitions%> </li>
+          <li class="list-group-item transparent">Professional Experience: <%= @user.doctor_professional_experience%> </li>
+          <li class="list-group-item transparent">Publications: <%= @user.doctor_publications%> </li>
+          <li class="list-group-item transparent">Memberships: <%= @user.doctor_memberships%> </li>
+        </ul>
         <div class="doctor-actions">
           <%if !is_doctor?%>
             <% if @is_charged %>
@@ -28,17 +36,41 @@
                 <% end %>
               </td>
             <%end%>
+            <%else%>
+            <div class="container-fluid">
+              <div class="modal-body">
+                <div class="row">
+                  <div class="modal-body row col-md-offset-3 col-md-6 text-center"><br>
+                    <h1> Ongoing Consultations</h1>
+                  </div>
+                  <div class="col-md-offset-3 col-md-6 text-center"><br>
+                    <div class="btn-group-vertical center-block" role="group" aria-label="...">
+                      <% @conversations.each do |conversation| %>
+                        <% if conversation.sender_id == current_user.id || conversation.recipient_id == current_user.id %>
+                          <% if conversation.sender_id == current_user.id %>
+                            <% recipient = User.find(conversation.recipient_id) %>
+                          <% else %>
+                            <% recipient = User.find(conversation.sender_id) %>
+                          <% end %>
+                          <td>
+                            <%= link_to conversation_messages_path(conversation), class: 'btn btn-primary btn-large' do %>
+                              <%if current_user.doctor?%>
+                                <span class="glyphicon glyphicon-envelope"></span><%=" #{recipient.firstname.capitalize}"%>
+                              <%else%>
+                                <span class="glyphicon glyphicon-envelope"></span><%=" Dr. #{recipient.firstname.capitalize}"%>
+                              <%end%>
+                            <% end %>
+                          </td><br>
+                        <% end %>
+                      <% end %>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
           <%end%>
       </div>
-      <ul class="list-group">
-        <li class="list-group-item transparent">Qualifications: <%= @user.doctor_qualifications%> </li>
-        <li class="list-group-item transparent">Speciality: <%= @user.doctor_speciality%> </li>
-        <li class="list-group-item transparent">Awards/Recognitions: <%= @user.doctor_awards_recognitions%> </li>
-        <li class="list-group-item transparent">Professional Experience: <%= @user.doctor_professional_experience%> </li>
-        <li class="list-group-item transparent">Publications: <%= @user.doctor_publications%> </li>
-        <li class="list-group-item transparent">Memberships: <%= @user.doctor_memberships%> </li>
-      </ul>
-    </div>
+      </div>
   </div>
   <%else%>
     <div class="modal-body row col-md-offset-4 col-md-4 text-center"><br>
@@ -53,7 +85,6 @@
     </div>
   </div>
 </div>
-<%end%>
 <div class="container-fluid">
   <div class="modal-body">
     <div class="row">
@@ -85,3 +116,5 @@
     </div>
   </div>
 </div>
+
+<%end%>
